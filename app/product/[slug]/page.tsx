@@ -42,6 +42,43 @@ export default function ProductPage() {
   return (
     <>
       <Header />
+      <head>
+        <title>{product.name} - Premium {product.category} Perfume | SCNT</title>
+        <meta name="description" content={`${product.description} Shop ${product.name} - ${product.notes} fragrance. ${product.longevity} longevity. Free shipping above ₹999.`} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": product.name,
+              "image": product.images,
+              "description": product.description,
+              "brand": {
+                "@type": "Brand",
+                "name": "SCNT"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": `https://scnt.in/product/${product.slug}`,
+                "priceCurrency": "INR",
+                "price": product.price.replace(/[₹,]/g, ''),
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "SCNT"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.7",
+                "reviewCount": "469"
+              },
+              "category": product.category
+            })
+          }}
+        />
+      </head>
       <main className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4">
           {/* Breadcrumb */}

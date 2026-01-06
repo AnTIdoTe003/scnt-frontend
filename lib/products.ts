@@ -603,3 +603,7 @@ export const PRODUCTS: Record<string, Product> = {
 export function getProduct(slug: string): Product | undefined {
   return PRODUCTS[slug];
 }
+
+export function getAllProducts(): Product[] {
+  return Object.values(PRODUCTS);
+}
