@@ -1,4 +1,4 @@
-# 🎉 SCNT SEO Implementation - Complete!
+# 🎉 VYBZ SEO Implementation - Complete!
 
 ## ✅ What's Been Done
 
@@ -18,7 +18,7 @@ Your website now has **enterprise-level SEO** that rivals major e-commerce brand
 - **Product Schema**: On every product page with:
   - Product name, images, description
   - Price in INR
-  - Brand (SCNT)
+  - Brand (VYBZ)
   - Availability status
   - Ratings (4.7/5 stars, 469 reviews)
 
@@ -56,8 +56,8 @@ Your website now has **enterprise-level SEO** that rivals major e-commerce brand
 Your website is optimized for these high-value keywords:
 
 #### Primary Keywords (High Priority)
-- ✅ SCNT perfume
-- ✅ SCNT fragrances
+- ✅ VYBZ perfume
+- ✅ VYBZ fragrances
 - ✅ Premium perfumes India
 - ✅ Luxury fragrances India
 
@@ -102,7 +102,7 @@ Your website is optimized for these high-value keywords:
 
 ### Ranking Predictions
 
-**"SCNT perfume"**
+**"VYBZ perfume"**
 - Week 1: #1 (guaranteed - it's your brand!)
 - Month 1: #1 with rich snippet
 
@@ -123,9 +123,9 @@ Your website is optimized for these high-value keywords:
 ### Immediate (Do Today!)
 1. **Google Search Console**
    - Go to: https://search.google.com/search-console
-   - Add property: https://scnt.in
+   - Add property: https://vybz.in
    - Verify ownership
-   - Submit sitemap: https://scnt.in/sitemap.xml
+   - Submit sitemap: https://vybz.in/sitemap.xml
 
 2. **Update Verification Code**
    - Open `app/layout.tsx`
@@ -140,8 +140,8 @@ Your website is optimized for these high-value keywords:
    - Verify business
 
 4. **Social Media**
-   - Create @SCNTOFFICIAL on Instagram
-   - Create @SCNTOFFICIAL on Twitter
+   - Create @VYBZOFFICIAL on Instagram
+   - Create @VYBZOFFICIAL on Twitter
    - Add website link to bio
    - Post first 3 products
 
@@ -245,7 +245,7 @@ Why?
 ## ⚠️ Important Notes
 
 ### Domain
-Currently using: `scnt.in` (in code)
+Currently using: `vybz.in` (in code)
 **Action Required**: Update all URLs to your actual domain when you purchase it.
 
 ### Verification Codes

@@ -1,8 +1,8 @@
-# 🎯 SCNT - Complete SEO Implementation
+# 🎯 VYBZ - Complete SEO Implementation
 
 ## 🎉 Congratulations! Your Website is SEO-Ready
 
-Your SCNT perfume website now has **enterprise-level SEO** that will help you rank on Google and get organic traffic.
+Your VYBZ perfume website now has **enterprise-level SEO** that will help you rank on Google and get organic traffic.
 
 ---
 
@@ -64,21 +64,21 @@ Your SCNT perfume website now has **enterprise-level SEO** that will help you ra
 1. Go to: https://search.google.com/search-console
 2. Add your website
 3. Verify ownership
-4. Submit sitemap: https://scnt.in/sitemap.xml
+4. Submit sitemap: https://vybz.in/sitemap.xml
 ```
 
 ### Step 2: Google Business Profile (10 min)
 ```bash
 1. Go to: https://business.google.com
-2. Create profile for SCNT
+2. Create profile for VYBZ
 3. Add photos and details
 4. Verify business
 ```
 
 ### Step 3: Social Media (5 min)
 ```bash
-Instagram: @SCNTOFFICIAL
-Twitter: @SCNTOFFICIAL
+Instagram: @VYBZOFFICIAL
+Twitter: @VYBZOFFICIAL
 Add website link in bio
 ```
 
@@ -107,8 +107,8 @@ Add website link in bio
 ## 🎯 Target Keywords (Already Optimized!)
 
 ### Primary Keywords
-- SCNT perfume
-- SCNT fragrances
+- VYBZ perfume
+- VYBZ fragrances
 - Premium perfumes India
 - Luxury fragrances India
 

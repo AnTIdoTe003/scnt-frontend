@@ -37,7 +37,7 @@ export default function ContactPage() {
               {
                 icon: <Mail className="w-8 h-8" />,
                 title: "Email",
-                value: "hello@scnt.in",
+                value: "hello@vybz.in",
                 description: "Drop us a line anytime",
               },
               {

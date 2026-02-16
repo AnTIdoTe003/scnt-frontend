@@ -4,10 +4,13 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Menu, X, ShoppingBag } from "lucide-react"
+import { useCart } from "@/contexts/cart-context"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { cart, setCartOpen } = useCart()
+  const cartCount = cart?.lines?.edges?.reduce((sum, e) => sum + e.node.quantity, 0) ?? 0
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +32,14 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative w-8 h-8 group-hover:scale-110 transition-transform duration-300">
             <Image
-              src="/scnt-logo.png"
-              alt="SCNT"
+              src="/vybz-logo.png"
+              alt="VYBZ"
               fill
               className="object-contain"
             />
           </div>
           <div className="text-2xl md:text-3xl font-bebas tracking-wider text-foreground hover:scale-105 transition-transform duration-300">
-            SCNT
+            VYBZ
           </div>
         </Link>
 
@@ -81,15 +84,18 @@ export function Header() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          <Link
-            href="/cart"
+          <button
+            onClick={() => setCartOpen(true)}
             className="relative p-2 hover:text-primary transition-colors group"
+            aria-label="Open cart"
           >
             <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-              0
-            </span>
-          </Link>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full min-w-5 h-5 flex items-center justify-center font-bold px-1">
+                {cartCount > 99 ? "99+" : cartCount}
+              </span>
+            )}
+          </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 hover:text-primary transition-colors"

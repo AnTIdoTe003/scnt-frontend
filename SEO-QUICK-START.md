@@ -1,4 +1,4 @@
-# 🚀 SCNT SEO - 5-Minute Quick Start
+# 🚀 VYBZ SEO - 5-Minute Quick Start
 
 ## ✅ Already Done (You're 80% Complete!)
 
@@ -9,22 +9,22 @@ Your website has enterprise-level SEO built-in. Everything technical is ready!
 ### 1. Google Search Console (10 min)
 ```
 1. Visit: https://search.google.com/search-console
-2. Click "Add Property" → Enter: https://scnt.in
+2. Click "Add Property" → Enter: https://vybz.in
 3. Choose "HTML tag" verification
 4. Copy the verification code
 5. Open app/layout.tsx
 6. Replace 'your-google-verification-code' with your code
 7. Deploy your site
 8. Click "Verify" in Search Console
-9. Submit sitemap: https://scnt.in/sitemap.xml
+9. Submit sitemap: https://vybz.in/sitemap.xml
 ```
 
 ### 2. Google Business (10 min)
 ```
 1. Visit: https://business.google.com
-2. Create profile: "SCNT"
+2. Create profile: "VYBZ"
 3. Category: "Perfume Store"
-4. Add website: https://scnt.in
+4. Add website: https://vybz.in
 5. Upload logo and 5 product photos
 6. Verify business
 ```
@@ -32,20 +32,20 @@ Your website has enterprise-level SEO built-in. Everything technical is ready!
 ### 3. Social Media (5 min)
 ```
 Instagram:
-- Username: @SCNTOFFICIAL
+- Username: @VYBZOFFICIAL
 - Bio: "Premium perfumes for Gen Z 🔥 Made in India 🇮🇳"
-- Link: https://scnt.in
+- Link: https://vybz.in
 
 Twitter:
-- Username: @SCNTOFFICIAL
+- Username: @VYBZOFFICIAL
 - Same bio + link
 ```
 
 ### 4. Google Analytics (5 min)
 ```
 1. Visit: https://analytics.google.com
-2. Create account: "SCNT"
-3. Add property: "SCNT Website"
+2. Create account: "VYBZ"
+3. Add property: "VYBZ Website"
 4. Copy Measurement ID
 5. Add to your site (optional - Vercel Analytics covers basics)
 ```
@@ -62,7 +62,7 @@ Twitter:
 ## 🎯 Target Keywords (Already Optimized!)
 
 When people search these, you'll appear:
-- ✅ "SCNT perfume" → #1 (Week 1)
+- ✅ "VYBZ perfume" → #1 (Week 1)
 - ✅ "Premium perfumes India" → Page 1 (Month 6)
 - ✅ "Long lasting perfumes India" → Page 1 (Month 6)
 - ✅ "Luxury fragrances India" → Page 1 (Month 6)

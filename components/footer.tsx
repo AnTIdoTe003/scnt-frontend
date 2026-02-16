@@ -14,9 +14,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="scale-fade-in">
-            <h3 className="text-3xl font-bebas tracking-wider text-foreground mb-4">SCNT</h3>
+            <h3 className="text-3xl font-bebas tracking-wider text-foreground mb-4">VYBZ</h3>
             <p className="text-muted-foreground text-sm mb-4 font-space">
-              Scent Different. Be Different.
+              Scent Your Vibe.
             </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="text-xs">Made with</span>
@@ -63,6 +63,15 @@ export function Footer() {
                 >
                   <Zap className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   Bundle Deals
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cart"
+                  className="hover:text-primary hover:translate-x-1 transition-all duration-300 inline-flex items-center gap-2 group"
+                >
+                  <Zap className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Cart
                 </Link>
               </li>
             </ul>
@@ -143,7 +152,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-primary/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-muted-foreground font-space">
           <p className="mb-4 sm:mb-0">
-            © 2026 SCNT. All rights reserved.
+            © 2026 VYBZ. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link

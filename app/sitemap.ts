@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next'
-import { getAllProducts } from '@/lib/products'
+import { getAllProductsAsync } from '@/lib/products'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://scnt.in'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = 'https://vybz.in'
 
-  // Get all products for dynamic URLs
-  const products = getAllProducts()
+  // Get all products (from Shopify or static fallback)
+  const products = await getAllProductsAsync()
   const productUrls = products.map((product) => ({
     url: `${baseUrl}/product/${product.slug}`,
     lastModified: new Date(),

@@ -6,21 +6,28 @@ import { Heart, ShoppingBag } from "lucide-react"
 import { useState } from "react"
 import { formatINR } from "@/lib/currency"
 import { getProduct } from "@/lib/products"
+import { useCart } from "@/contexts/cart-context"
 
 interface ProductCardProps {
   name: string
   price: string
   notes: string
   slug: string
+  image?: string
+  variantId?: string
+  availableForSale?: boolean
 }
 
-export function ProductCard({ name, price, notes, slug }: ProductCardProps) {
+export function ProductCard({ name, price, notes, slug, image, variantId, availableForSale = true }: ProductCardProps) {
   const [isLiked, setIsLiked] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [adding, setAdding] = useState(false)
+  const { addToCart } = useCart()
   const product = getProduct(slug)
 
-  // Use the first image from the product database if it exists
-  const displayImage = product?.images?.[0] || "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800"
+  // Prefer passed image, then product DB, then fallback
+  const displayImage =
+    image ?? product?.images?.[0] ?? "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800"
 
   return (
     <div
@@ -77,21 +84,45 @@ export function ProductCard({ name, price, notes, slug }: ProductCardProps) {
                 isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
               }`}
             >
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  // Add to cart logic
-                }}
-                className="w-full py-3 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] transition-all duration-300 group/btn"
-              >
-                <ShoppingBag className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                ADD TO BAG
-              </button>
+              {!availableForSale ? (
+                <div className="w-full py-3 bg-muted text-muted-foreground rounded-xl font-space font-bold text-sm text-center cursor-not-allowed">
+                  OUT OF STOCK
+                </div>
+              ) : variantId ? (
+                <button
+                  onClick={async (e) => {
+                    e.preventDefault()
+                    setAdding(true)
+                    try {
+                      await addToCart(variantId, 1)
+                    } finally {
+                      setAdding(false)
+                    }
+                  }}
+                  disabled={adding}
+                  className="w-full py-3 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] transition-all duration-300 group/btn disabled:opacity-50"
+                >
+                  <ShoppingBag className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+                  {adding ? "ADDING..." : "ADD TO BAG"}
+                </button>
+              ) : (
+                <Link
+                  href={`/product/${slug}`}
+                  className="block w-full py-3 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm text-center hover:scale-[1.02] transition-all duration-300"
+                >
+                  VIEW PRODUCT
+                </Link>
+              )}
             </div>
           </div>
 
           {/* Product Info */}
           <div className="p-5">
+            {!availableForSale && (
+              <span className="inline-block px-2 py-0.5 rounded text-xs font-space font-bold bg-destructive/20 text-destructive mb-2">
+                OUT OF STOCK
+              </span>
+            )}
             <h3 className="font-space font-bold text-lg mb-2 text-foreground group-hover:text-accent transition-colors duration-300">
               {name}
             </h3>

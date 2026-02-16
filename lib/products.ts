@@ -1,3 +1,5 @@
+import { fetchShopifyProducts, fetchShopifyProductByHandle } from "./shopify/products";
+
 export type ProductCategory = "Men" | "Women" | "Unisex";
 
 export interface Product {
@@ -12,8 +14,12 @@ export interface Product {
   heartNotes: string[];
   baseNotes: string[];
   longevity: string;
-  recommendations: Array<{ name: string; slug: string; price: string }>;
+  recommendations: Array<{ name: string; slug: string; price: string; variantId?: string; availableForSale?: boolean }>;
   images: string[];
+  /** Shopify variant GID for Add to Cart */
+  variantId?: string;
+  /** Whether the product is in stock (Shopify: availableForSale) */
+  availableForSale?: boolean;
 }
 
 // Single source of truth: every slug used in category pages MUST exist here.
@@ -606,4 +612,24 @@ export function getProduct(slug: string): Product | undefined {
 
 export function getAllProducts(): Product[] {
   return Object.values(PRODUCTS);
+}
+
+// Shopify-backed async functions (fallback to static data if Shopify fails)
+export async function getProductAsync(slug: string): Promise<Product | undefined> {
+  const shopifyProduct = await fetchShopifyProductByHandle(slug);
+  if (shopifyProduct) return shopifyProduct;
+  return PRODUCTS[slug];
+}
+
+export async function getAllProductsAsync(): Promise<Product[]> {
+  const shopifyProducts = await fetchShopifyProducts({ first: 100 });
+  if (shopifyProducts.length > 0) return shopifyProducts;
+  return Object.values(PRODUCTS);
+}
+
+export async function getProductsByCategoryAsync(
+  category: ProductCategory
+): Promise<Product[]> {
+  const all = await getAllProductsAsync();
+  return all.filter((p) => p.category === category);
 }

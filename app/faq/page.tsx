@@ -7,7 +7,7 @@ import { ChevronDown, Sparkles, MessageCircle, Mail } from "lucide-react"
 
 const faqs = [
   {
-    question: "What makes SCNT fragrances different?",
+    question: "What makes VYBZ fragrances different?",
     answer:
       "Our fragrances are crafted with premium ingredients and a modern, luxury sensibility. Each scent is built for presence and performance—clean openings, rich dry-downs, and lasting projection.",
     emoji: "✦",
@@ -33,13 +33,13 @@ const faqs = [
   {
     question: "Can I create a custom fragrance?",
     answer:
-      "Yes—reach out to us at hello@scnt.in to discuss your preferences and availability for custom consultations.",
+      "Yes—reach out to us at hello@vybz.in to discuss your preferences and availability for custom consultations.",
     emoji: "✦",
   },
   {
     question: "Are your fragrances cruelty-free?",
     answer:
-      "Yes, SCNT fragrances are cruelty-free and made with responsibly sourced ingredients.",
+      "Yes, VYBZ fragrances are cruelty-free and made with responsibly sourced ingredients.",
     emoji: "✦",
   },
   {
@@ -79,7 +79,7 @@ export default function FAQPage() {
               WE GOT ANSWERS
             </h1>
             <p className="text-xl text-muted-foreground font-dm slide-in-bottom" style={{ animationDelay: "0.1s" }}>
-              Everything you need to know about SCNT. 💡
+              Everything you need to know about VYBZ. 💡
             </p>
           </div>
         </section>
@@ -139,7 +139,7 @@ export default function FAQPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="mailto:hello@scnt.in"
+                  href="mailto:hello@vybz.in"
                   className="group px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 glow-primary inline-flex items-center justify-center gap-2"
                 >
                   <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />

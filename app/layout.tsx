@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Space_Grotesk, DM_Sans, Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { CartProvider } from "@/contexts/cart-context"
+import { CartDrawer } from "@/components/cart-drawer"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -24,11 +26,11 @@ const bebasNeue = Bebas_Neue({
 })
 
 export const metadata: Metadata = {
-  title: "SCNT - Premium Perfumes for Gen Z | Buy Luxury Fragrances Online India",
+  title: "VYBZ - Premium Perfumes for Gen Z | Buy Luxury Fragrances Online India",
   description:
-    "SCNT offers premium luxury perfumes for the new generation. Shop long-lasting fragrances for men, women & unisex. Free shipping on orders above ₹999. Made in India.",
+    "VYBZ offers premium luxury perfumes for the new generation. Shop long-lasting fragrances for men, women & unisex. Free shipping on orders above ₹999. Made in India.",
   keywords: [
-    "SCNT perfume",
+    "VYBZ perfume",
     "luxury perfumes India",
     "premium fragrances",
     "perfumes for Gen Z",
@@ -39,34 +41,34 @@ export const metadata: Metadata = {
     "buy perfumes online India",
     "affordable luxury perfumes",
     "Indian perfume brand",
-    "SCNT fragrances",
+    "VYBZ fragrances",
     "eau de parfum India",
     "best perfumes 2026",
     "trending perfumes India"
   ],
-  authors: [{ name: "SCNT" }],
-  creator: "SCNT",
-  publisher: "SCNT",
+  authors: [{ name: "VYBZ" }],
+  creator: "VYBZ",
+  publisher: "VYBZ",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://scnt.in'),
+  metadataBase: new URL('https://vybz.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "SCNT - Premium Perfumes for Gen Z | Luxury Fragrances India",
+    title: "VYBZ - Premium Perfumes for Gen Z | Luxury Fragrances India",
     description: "Shop premium long-lasting perfumes for men, women & unisex. Free shipping above ₹999. Made in India for the new generation.",
-    url: 'https://scnt.in',
-    siteName: 'SCNT',
+    url: 'https://vybz.in',
+    siteName: 'VYBZ',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SCNT Premium Perfumes',
+        alt: 'VYBZ Premium Perfumes',
       },
     ],
     locale: 'en_IN',
@@ -74,10 +76,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SCNT - Premium Perfumes for Gen Z',
+    title: 'VYBZ - Premium Perfumes for Gen Z',
     description: 'Shop premium long-lasting perfumes. Free shipping above ₹999. Made in India.',
     images: ['/og-image.jpg'],
-    creator: '@SCNTOFFICIAL',
+    creator: '@VYBZOFFICIAL',
   },
   robots: {
     index: true,
@@ -109,7 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${bebasNeue.variable}`}>
       <head>
-        <link rel="canonical" href="https://scnt.in" />
+        <link rel="canonical" href="https://vybz.in" />
         <meta name="theme-color" content="#14161d" />
         <script
           type="application/ld+json"
@@ -117,20 +119,20 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "SCNT",
-              "url": "https://scnt.in",
-              "logo": "https://scnt.in/icon.png",
+              "name": "VYBZ",
+              "url": "https://vybz.in",
+              "logo": "https://vybz.in/icon.png",
               "description": "Premium luxury perfumes for the new generation. Made in India.",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "hello@scnt.in",
+                "email": "hello@vybz.in",
                 "contactType": "Customer Service",
                 "areaServed": "IN",
                 "availableLanguage": ["English", "Hindi"]
               },
               "sameAs": [
-                "https://instagram.com/scntofficial",
-                "https://twitter.com/scntofficial"
+                "https://instagram.com/vybzofficial",
+                "https://twitter.com/vybzofficial"
               ],
               "address": {
                 "@type": "PostalAddress",
@@ -145,11 +147,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "SCNT",
-              "url": "https://scnt.in",
+              "name": "VYBZ",
+              "url": "https://vybz.in",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://scnt.in/shop?q={search_term_string}",
+                "target": "https://vybz.in/shop?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -157,7 +159,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-dm antialiased">
-        {children}
+        <CartProvider>
+          {children}
+          <CartDrawer />
+        </CartProvider>
         <Analytics />
       </body>
     </html>

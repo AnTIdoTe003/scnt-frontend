@@ -1,4 +1,4 @@
-# 🚀 SCNT SEO Implementation Guide
+# 🚀 VYBZ SEO Implementation Guide
 
 ## ✅ What's Already Implemented
 
@@ -40,8 +40,8 @@
 ## 🎯 Target Keywords
 
 ### Primary Keywords
-- SCNT perfume
-- SCNT fragrances
+- VYBZ perfume
+- VYBZ fragrances
 - Premium perfumes India
 - Luxury fragrances India
 
@@ -66,21 +66,21 @@
 #### 1. **Google Search Console Setup**
 ```bash
 1. Go to https://search.google.com/search-console
-2. Add property: https://scnt.in
+2. Add property: https://vybz.in
 3. Verify ownership using HTML tag method
 4. Copy verification code and add to app/layout.tsx:
    verification: {
      google: 'your-verification-code-here'
    }
-5. Submit sitemap: https://scnt.in/sitemap.xml
+5. Submit sitemap: https://vybz.in/sitemap.xml
 ```
 
 #### 2. **Google Business Profile**
 - Create Google Business Profile
-- Add business name: SCNT
+- Add business name: VYBZ
 - Category: Perfume Store / Beauty Supply Store
 - Add logo, photos, and business hours
-- Add website link: https://scnt.in
+- Add website link: https://vybz.in
 - Verify business
 
 #### 3. **Google Analytics 4**
@@ -91,8 +91,8 @@
   - Set up conversion goals (Add to Cart, Purchase)
 
 #### 4. **Social Media Verification**
-- Instagram: @SCNTOFFICIAL
-- Twitter: @SCNTOFFICIAL
+- Instagram: @VYBZOFFICIAL
+- Twitter: @VYBZOFFICIAL
 - Link back to website in bio
 - Use consistent branding
 
@@ -165,7 +165,7 @@ Track these metrics weekly:
 
 ### Month 1-3: Foundation
 - Website indexed by Google
-- Initial rankings for brand name "SCNT"
+- Initial rankings for brand name "VYBZ"
 - 100-500 monthly organic visitors
 
 ### Month 4-6: Growth
@@ -184,7 +184,7 @@ All images should have:
 ```html
 <Image
   src="/product.jpg"
-  alt="SCNT Midnight Essence - Premium Woody Spicy Perfume for Men"
+  alt="VYBZ Midnight Essence - Premium Woody Spicy Perfume for Men"
   title="Midnight Essence Perfume"
 />
 ```
@@ -234,7 +234,7 @@ SEO brings traffic, but CRO converts it:
 
 ### Key Performance Indicators (KPIs)
 1. **Organic Traffic**: Target 10K/month by Month 12
-2. **Keyword Rankings**: Top 10 for "SCNT perfume"
+2. **Keyword Rankings**: Top 10 for "VYBZ perfume"
 3. **Conversion Rate**: Target 2-3%
 4. **Average Order Value**: Track and optimize
 5. **Customer Acquisition Cost**: Lower via SEO vs Ads

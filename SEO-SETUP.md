@@ -1,4 +1,4 @@
-# 🎯 SCNT SEO - Quick Setup Guide
+# 🎯 VYBZ SEO - Quick Setup Guide
 
 ## ✅ Already Implemented (You're 80% Done!)
 
@@ -34,24 +34,24 @@ Your website now has **enterprise-level SEO** built-in:
 ```
 1. Go to: https://search.google.com/search-console
 2. Click "Add Property"
-3. Enter: https://scnt.in
+3. Enter: https://vybz.in
 4. Choose "HTML tag" verification method
 5. Copy the verification code (looks like: google-site-verification=xxxxx)
 6. Open app/layout.tsx
 7. Replace 'your-google-verification-code' with your actual code
 8. Deploy your site
 9. Click "Verify" in Google Search Console
-10. Submit sitemap: https://scnt.in/sitemap.xml
+10. Submit sitemap: https://vybz.in/sitemap.xml
 ```
 
 ### Step 2: Google Business Profile (10 min)
 ```
 1. Go to: https://business.google.com
 2. Click "Manage now"
-3. Enter business name: SCNT
+3. Enter business name: VYBZ
 4. Choose category: "Perfume Store" or "Beauty Supply Store"
 5. Add location (if physical store) or select "I deliver to customers"
-6. Add phone number and website: https://scnt.in
+6. Add phone number and website: https://vybz.in
 7. Verify your business (via postcard, phone, or email)
 8. Upload logo and photos
 9. Add business hours
@@ -61,10 +61,10 @@ Your website now has **enterprise-level SEO** built-in:
 ### Step 3: Google Analytics 4 (10 min)
 ```
 1. Go to: https://analytics.google.com
-2. Create account: "SCNT"
-3. Create property: "SCNT Website"
+2. Create account: "VYBZ"
+3. Create property: "VYBZ Website"
 4. Select "Web" platform
-5. Enter website URL: https://scnt.in
+5. Enter website URL: https://vybz.in
 6. Copy Measurement ID (looks like: G-XXXXXXXXXX)
 7. Add to your website (Vercel Analytics already covers basics)
 8. Set up conversion events:
@@ -76,14 +76,14 @@ Your website now has **enterprise-level SEO** built-in:
 ### Step 4: Social Media Setup (5 min)
 ```
 Instagram:
-1. Create account: @SCNTOFFICIAL
+1. Create account: @VYBZOFFICIAL
 2. Add bio: "Premium perfumes for Gen Z 🔥 Made in India 🇮🇳"
-3. Add link: https://scnt.in
+3. Add link: https://vybz.in
 4. Post product photos
-5. Use hashtags: #SCNT #PerfumesIndia #LuxuryFragrances
+5. Use hashtags: #VYBZ #PerfumesIndia #LuxuryFragrances
 
 Twitter:
-1. Create account: @SCNTOFFICIAL
+1. Create account: @VYBZOFFICIAL
 2. Add bio + link
 3. Tweet about launches
 ```
@@ -92,7 +92,7 @@ Twitter:
 
 ### Week 1-2
 - ✅ Website indexed by Google
-- ✅ Appears for "SCNT" brand searches
+- ✅ Appears for "VYBZ" brand searches
 - ✅ 10-50 daily visitors
 
 ### Month 1-3
@@ -113,8 +113,8 @@ Twitter:
 ## 🎯 Target Keywords (Already Optimized!)
 
 Your website is optimized for:
-- ✅ SCNT perfume
-- ✅ SCNT fragrances
+- ✅ VYBZ perfume
+- ✅ VYBZ fragrances
 - ✅ Premium perfumes India
 - ✅ Luxury fragrances India
 - ✅ Perfumes for Gen Z
@@ -127,14 +127,14 @@ Your website is optimized for:
 
 ### 1. Check if Google Indexed Your Site
 ```
-Search in Google: site:scnt.in
+Search in Google: site:vybz.in
 You should see all your pages listed
 ```
 
 ### 2. Check Your Rankings
 ```
 Search in Google (incognito mode):
-- "SCNT perfume" (you should be #1)
+- "VYBZ perfume" (you should be #1)
 - "premium perfumes India" (aim for page 1-3)
 - "luxury fragrances India" (aim for page 1-3)
 ```
@@ -142,14 +142,14 @@ Search in Google (incognito mode):
 ### 3. Check Site Speed
 ```
 Go to: https://pagespeed.web.dev
-Enter: https://scnt.in
+Enter: https://vybz.in
 Aim for: 90+ score on mobile and desktop
 ```
 
 ### 4. Check Mobile Friendliness
 ```
 Go to: https://search.google.com/test/mobile-friendly
-Enter: https://scnt.in
+Enter: https://vybz.in
 Should show: "Page is mobile friendly"
 ```
 

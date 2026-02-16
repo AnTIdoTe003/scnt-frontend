@@ -393,7 +393,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
                 <Instagram className="w-4 h-4 text-pink-500" />
-                <span className="text-sm font-space font-bold">@SCNTOFFICIAL</span>
+                <span className="text-sm font-space font-bold">@VYBZOFFICIAL</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
                 JOIN THE COMMUNITY
@@ -435,7 +435,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
-                WHY SCNT?
+                WHY VYBZ?
               </h2>
               <p className="text-muted-foreground font-dm">We're not like other perfume brands fr fr</p>
             </div>
@@ -549,7 +549,7 @@ export default function Home() {
               <span className="text-foreground">NEW GENERATION</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-6 font-dm leading-relaxed">
-              SCNT was created by perfume lovers who were tired of fragrances that smelled like our parents' generation. We wanted something
+              VYBZ was created by perfume lovers who were tired of fragrances that smelled like our parents' generation. We wanted something
               <span className="text-primary font-semibold"> fresh</span>,{" "}
               <span className="text-accent font-semibold">bold</span>, and{" "}
               <span className="gradient-text font-semibold">unapologetically us</span>.

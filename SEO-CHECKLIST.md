@@ -1,4 +1,4 @@
-# ✅ SCNT SEO Launch Checklist
+# ✅ VYBZ SEO Launch Checklist
 
 ## Pre-Launch (Before Going Live)
 
@@ -42,8 +42,8 @@
 - [ ] Submit to Google Shopping (if applicable)
 
 ### Social Media
-- [ ] Create Instagram: @SCNTOFFICIAL
-- [ ] Create Twitter: @SCNTOFFICIAL
+- [ ] Create Instagram: @VYBZOFFICIAL
+- [ ] Create Twitter: @VYBZOFFICIAL
 - [ ] Add website link to all profiles
 - [ ] Post first 3 product photos
 - [ ] Use relevant hashtags
@@ -201,7 +201,7 @@
 - ✅ Website indexed by Google
 - ✅ 100+ daily visitors
 - ✅ First organic sale
-- ✅ Ranking for brand name "SCNT"
+- ✅ Ranking for brand name "VYBZ"
 
 ### Month 3
 - ✅ 500+ daily visitors
@@ -242,7 +242,7 @@
 
 ## Quick Reference
 
-### When Someone Searches "SCNT"
+### When Someone Searches "VYBZ"
 **Expected Result**: Your homepage appears #1
 **Timeline**: 1-2 weeks after launch
 
