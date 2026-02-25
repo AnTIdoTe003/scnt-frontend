@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="pt-20">
+      <main className="pt-10">
         {/* Hero Section */}
         <section className="relative h-[calc(100vh-5rem)] min-h-[600px] flex items-center justify-center overflow-hidden">
           {/* Background Image */}
