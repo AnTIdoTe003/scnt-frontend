@@ -8,9 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
   const { slug } = await params
   const resolvedSlug = Array.isArray(slug) ? slug[0] : slug
   const product = resolvedSlug ? await getProductAsync(resolvedSlug) : undefined
-  if (!product) return { title: "Product Not Found | VYBZ" }
+  if (!product) return { title: "Product Not Found | XPerfumes" }
   return {
-    title: `${product.name} - Premium ${product.category} Perfume | VYBZ`,
+    title: `${product.name} - Premium ${product.category} Perfume | XPerfumes`,
     description: `Shop ${product.name} - ${product.notes} fragrance. ${product.longevity} longevity. Free shipping above ₹999.`,
   }
 }
@@ -50,14 +50,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug?:
             name: product.name,
             image: product.images,
             description: product.description,
-            brand: { "@type": "Brand", name: "VYBZ" },
+            brand: { "@type": "Brand", name: "XPerfumes" },
             offers: {
               "@type": "Offer",
-              url: `https://vybz.in/product/${product.slug}`,
+              url: `https://xperfumes.in/product/${product.slug}`,
               priceCurrency: "INR",
               price: product.price.replace(/[₹,]/g, ""),
               availability: "https://schema.org/InStock",
-              seller: { "@type": "Organization", name: "VYBZ" },
+              seller: { "@type": "Organization", name: "XPerfumes" },
             },
             aggregateRating: { "@type": "AggregateRating", ratingValue: "4.7", reviewCount: "469" },
             category: product.category,

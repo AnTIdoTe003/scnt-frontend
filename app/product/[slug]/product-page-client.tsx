@@ -131,7 +131,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
             <div className="flex flex-col slide-in-bottom">
               <div className="mb-6">
                 <div className="text-xs font-space tracking-widest text-muted-foreground mb-2">
-                  The VYBZ Collection
+                  The XPerfumes Collection
                 </div>
                 {product.availableForSale === false && (
                   <span className="inline-block px-3 py-1 rounded-full text-xs font-space font-bold bg-destructive/20 text-destructive mb-3">
@@ -252,7 +252,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
 
               <div className="mt-5 rounded-2xl border border-border bg-secondary/40 p-6">
                 <div className="text-center font-space font-bold tracking-widest text-sm mb-5">
-                  TRY VYBZ RISK‑FREE
+                  TRY XPERFUMES RISK‑FREE
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div className="px-2">
@@ -278,7 +278,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
                   </div>
                 </div>
                 <div className="text-center text-[11px] text-muted-foreground font-dm mt-5">
-                  For help, email us at <span className="font-semibold">support@vybz.in</span>
+                  For help, email us at <span className="font-semibold">support@xperfumes.in</span>
                 </div>
               </div>
 

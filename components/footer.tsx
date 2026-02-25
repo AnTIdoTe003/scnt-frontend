@@ -14,7 +14,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="scale-fade-in">
-            <h3 className="text-3xl font-bebas tracking-wider text-foreground mb-4">VYBZ</h3>
+            <h3 className="text-3xl font-bebas tracking-wider text-foreground mb-4">XPerfumes</h3>
             <p className="text-muted-foreground text-sm mb-4 font-space">
               Scent Your Vibe.
             </p>
@@ -152,7 +152,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-primary/20 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-muted-foreground font-space">
           <p className="mb-4 sm:mb-0">
-            © 2026 VYBZ. All rights reserved.
+            © 2026 XPerfumes. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link

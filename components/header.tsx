@@ -32,14 +32,14 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative w-8 h-8 group-hover:scale-110 transition-transform duration-300">
             <Image
-              src="/vybz-logo.png"
-              alt="VYBZ"
+              src="/xperfumes-logo.png"
+              alt="XPerfumes"
               fill
               className="object-contain"
             />
           </div>
           <div className="text-2xl md:text-3xl font-bebas tracking-wider text-foreground hover:scale-105 transition-transform duration-300">
-            VYBZ
+            XPerfumes
           </div>
         </Link>
 

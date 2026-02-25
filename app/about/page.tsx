@@ -23,7 +23,7 @@ export default function AboutPage() {
             </div>
 
             <h1 className="text-6xl md:text-9xl font-bebas mb-8 leading-none slide-in-bottom">
-              <span className="block gradient-text text-glow">THE VYBZ</span>
+              <span className="block gradient-text text-glow">THE XPERFUMES</span>
               <span className="block text-foreground">STORY</span>
             </h1>
 
@@ -43,12 +43,12 @@ export default function AboutPage() {
                 <h2 className="text-3xl md:text-4xl font-bebas gradient-text">THE BEGINNING</h2>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed font-dm mb-6">
-                VYBZ was born from a simple belief: <span className="text-primary font-bold">scent is power</span>.
+                XPerfumes was born from a simple belief: <span className="text-primary font-bold">scent is power</span>.
                 In a world where personal expression is everything, we create fragrances for those who refuse to blend in,
                 who own their presence, and who understand that every moment deserves an olfactory signature.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed font-dm">
-                Founded in the heart of the night—literally and figuratively—VYBZ draws inspiration from the energy of
+                Founded in the heart of the night—literally and figuratively—XPerfumes draws inspiration from the energy of
                 nightlife, the confidence of self-assured individuals, and the beauty of individuality. We believe that
                 fragrance is not just about smelling good; it's about <span className="text-accent font-bold">feeling invincible</span>.
               </p>
@@ -61,7 +61,7 @@ export default function AboutPage() {
                 <h2 className="text-3xl md:text-4xl font-bebas gradient-text">OUR PHILOSOPHY</h2>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed font-dm mb-6">
-                Every VYBZ fragrance is meticulously crafted to tell a story. Our master perfumers source the finest
+                Every XPerfumes fragrance is meticulously crafted to tell a story. Our master perfumers source the finest
                 ingredients from around the world, blending them with precision and passion. We don't compromise on
                 quality—<span className="text-primary font-bold">we never will</span>.
               </p>
@@ -78,14 +78,14 @@ export default function AboutPage() {
                 <h2 className="text-3xl md:text-4xl font-bebas gradient-text">WHO WE'RE FOR</h2>
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed font-dm mb-6">
-                VYBZ is for the <span className="gradient-text font-bold">night owl</span>, the{" "}
+                XPerfumes is for the <span className="gradient-text font-bold">night owl</span>, the{" "}
                 <span className="gradient-text font-bold">trailblazer</span>, the{" "}
                 <span className="gradient-text font-bold">rule-breaker</span>. It's for people who don't ask for
                 permission to be themselves.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed font-dm">
                 Whether you're owning a boardroom, commanding a nightclub, or simply living life on your own terms,
-                VYBZ is your olfactory declaration of independence. We're not just a brand—we're a{" "}
+                XPerfumes is your olfactory declaration of independence. We're not just a brand—we're a{" "}
                 <span className="text-accent font-bold">movement</span>.
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
                 <p className="text-3xl md:text-4xl font-bebas gradient-text mb-6 leading-tight">
                   "SCENT THE NIGHT. OWN THE DAY."
                 </p>
-                <p className="text-lg text-primary font-space font-bold">— The VYBZ Team</p>
+                <p className="text-lg text-primary font-space font-bold">— The XPerfumes Team</p>
               </div>
             </div>
 

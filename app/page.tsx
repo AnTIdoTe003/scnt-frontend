@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronRight, Sparkles, Zap, Heart, Star, Play, Clock, Flame, TrendingUp, Quote, Instagram, Send, Gift, Truck, Shield, ArrowRight } from "lucide-react"
+import { ChevronRight, ChevronDown, Sparkles, Zap, Heart, Star, Play, Clock, Flame, TrendingUp, Quote, Instagram, Send, Gift, Truck, Shield, ArrowRight } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ProductCard } from "@/components/product-card"
@@ -13,84 +13,65 @@ export default function Home() {
       <Header />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Animated background */}
-          <div className="absolute inset-0 animated-gradient opacity-20" />
+        <section className="relative h-[calc(100vh-5rem)] min-h-[600px] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1920"
+            alt="Luxury perfume bottles in moody lighting"
+            fill
+            priority
+            className="object-cover"
+          />
 
-          {/* Floating orbs */}
-          <div className="absolute top-20 right-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl float opacity-40" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/30 rounded-full blur-3xl float opacity-30" style={{ animationDelay: "2s" }} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-3xl pulse-glow" />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/30" />
+          <div className="absolute inset-0 hero-vignette" />
 
-          <div className="relative z-10 max-w-6xl mx-auto px-4 text-center py-20">
+          {/* Content */}
+          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
             {/* Badge */}
-            <div className="mb-8 inline-flex items-center gap-2 px-6 py-3 glass-card rounded-full border border-primary/30 scale-fade-in hover:scale-110 transition-transform duration-300 cursor-pointer">
-              <Flame className="w-5 h-5 text-orange-500 animate-pulse" />
-              <span className="text-sm font-space font-bold tracking-widest gradient-text">
-                TRENDING IN INDIA
+            <div className="mb-10 inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm scale-fade-in">
+              <span className="text-xs font-space font-bold tracking-[0.25em] text-amber-300/90">
+                PREMIUM INDIAN FRAGRANCE
               </span>
-              <TrendingUp className="w-5 h-5 text-green-500 animate-pulse" />
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bebas mb-8 leading-none slide-in-bottom">
-              <span className="block gradient-text text-glow">SCENT THE</span>
-              <span className="block text-foreground">NIGHT.</span>
-              <span className="block gradient-text-alt text-glow-accent">OWN THE DAY.</span>
+            <h1 className="font-bebas leading-[0.9] mb-8 slide-in-bottom">
+              <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
+                SCENT THE <span className="text-amber-400">NIGHT.</span>
+              </span>
+              <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
+                OWN THE <span className="text-amber-400">DAY.</span>
+              </span>
             </h1>
 
-            <p className="text-lg md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto font-dm slide-in-bottom leading-relaxed" style={{ animationDelay: "0.2s" }}>
-              Premium fragrances that hit different. Clean openings, rich dry-downs, and compliment-magnet performance.
-              <span className="text-primary font-semibold"> Made for the main character era.</span>
+            {/* Subtitle */}
+            <p className="text-base md:text-xl text-white/70 mb-12 max-w-2xl font-dm leading-relaxed slide-in-bottom" style={{ animationDelay: "0.2s" }}>
+              Premium fragrances crafted for the bold. Long-lasting, compliment-worthy, unapologetically you.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 slide-in-bottom" style={{ animationDelay: "0.4s" }}>
+            <div className="flex flex-col sm:flex-row gap-4 items-center slide-in-bottom" style={{ animationDelay: "0.4s" }}>
               <Link href="/shop">
-                <button className="group px-10 py-5 bg-linear-to-r from-primary to-accent text-white rounded-2xl font-space font-bold text-lg hover:scale-110 hover:rotate-1 transition-all duration-300 glow-primary flex items-center gap-3 shadow-2xl">
+                <button className="group px-10 py-4 bg-linear-to-r from-amber-500 to-amber-700 text-white rounded-full font-space font-bold text-sm tracking-wider hover:scale-105 transition-all duration-300 shadow-[0_8px_32px_rgba(183,139,91,0.4)] flex items-center gap-3">
                   SHOP THE DROP
-                  <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
               <Link href="/about">
-                <button className="group px-10 py-5 glass-card border-2 border-primary/20 text-foreground rounded-2xl font-space font-bold text-lg hover:scale-110 hover:-rotate-1 hover:bg-secondary transition-all duration-300 shadow-2xl flex items-center gap-3">
-                  <Play className="w-5 h-5" />
-                  WATCH OUR STORY
+                <button className="group px-10 py-4 border border-white/30 text-white rounded-full font-space font-bold text-sm tracking-wider hover:bg-white/10 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm">
+                  <Play className="w-4 h-4" />
+                  OUR STORY
                 </button>
               </Link>
             </div>
+          </div>
 
-            {/* Social Proof Quick Stats */}
-            <div className="flex flex-wrap justify-center gap-6 mb-8 scale-fade-in" style={{ animationDelay: "0.5s" }}>
-              <div className="flex items-center gap-2 text-sm font-dm text-muted-foreground">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-linear-to-br from-primary to-accent border-2 border-background" />
-                  ))}
-                </div>
-                <span><span className="text-foreground font-bold">2,847+</span> happy customers this month</span>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto scale-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="glass-card p-4 rounded-xl hover:glow-subtle transition-all duration-300 hover:-translate-y-1">
-                <div className="text-3xl font-bebas gradient-text mb-1">10K+</div>
-                <div className="text-xs text-muted-foreground font-space">HAPPY CUSTOMERS</div>
-              </div>
-              <div className="glass-card p-4 rounded-xl hover:glow-subtle transition-all duration-300 hover:-translate-y-1">
-                <div className="text-3xl font-bebas gradient-text mb-1">4.9★</div>
-                <div className="text-xs text-muted-foreground font-space">AVG RATING</div>
-              </div>
-              <div className="glass-card p-4 rounded-xl hover:glow-subtle transition-all duration-300 hover:-translate-y-1">
-                <div className="text-3xl font-bebas gradient-text mb-1">8-10h</div>
-                <div className="text-xs text-muted-foreground font-space">LONGEVITY</div>
-              </div>
-              <div className="glass-card p-4 rounded-xl hover:glow-subtle transition-all duration-300 hover:-translate-y-1">
-                <div className="text-3xl font-bebas gradient-text mb-1">100%</div>
-                <div className="text-xs text-muted-foreground font-space">AUTHENTIC</div>
-              </div>
-            </div>
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 scale-fade-in" style={{ animationDelay: "0.8s" }}>
+            <span className="text-[10px] font-space font-bold tracking-[0.3em] text-white/40 uppercase">Scroll</span>
+            <ChevronDown className="w-5 h-5 text-white/40 bounce-subtle" />
           </div>
         </section>
 
@@ -134,7 +115,7 @@ export default function Home() {
                 { name: "Ethereal", tag: "Clean Girl Era", sold: "1.2K sold", image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=400", slug: "ethereal" },
               ].map((item, index) => (
                 <Link key={item.name} href={`/product/${item.slug}`}>
-                  <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer scale-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer scale-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                     <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute top-3 left-3">
@@ -393,7 +374,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
                 <Instagram className="w-4 h-4 text-pink-500" />
-                <span className="text-sm font-space font-bold">@VYBZOFFICIAL</span>
+                <span className="text-sm font-space font-bold">@XPERFUMES</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
                 JOIN THE COMMUNITY
@@ -435,7 +416,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
-                WHY VYBZ?
+                WHY XPERFUMES?
               </h2>
               <p className="text-muted-foreground font-dm">We're not like other perfume brands fr fr</p>
             </div>
@@ -549,7 +530,7 @@ export default function Home() {
               <span className="text-foreground">NEW GENERATION</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-6 font-dm leading-relaxed">
-              VYBZ was created by perfume lovers who were tired of fragrances that smelled like our parents' generation. We wanted something
+              XPerfumes was created by perfume lovers who were tired of fragrances that smelled like our parents' generation. We wanted something
               <span className="text-primary font-semibold"> fresh</span>,{" "}
               <span className="text-accent font-semibold">bold</span>, and{" "}
               <span className="gradient-text font-semibold">unapologetically us</span>.

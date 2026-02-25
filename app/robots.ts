@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/', '/_next/'],
       },
     ],
-    sitemap: 'https://vybz.in/sitemap.xml',
+    sitemap: 'https://xperfumes.in/sitemap.xml',
   }
 }
 

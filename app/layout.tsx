@@ -26,11 +26,11 @@ const bebasNeue = Bebas_Neue({
 })
 
 export const metadata: Metadata = {
-  title: "VYBZ - Premium Perfumes for Gen Z | Buy Luxury Fragrances Online India",
+  title: "XPerfumes - Premium Perfumes for Gen Z | Buy Luxury Fragrances Online India",
   description:
-    "VYBZ offers premium luxury perfumes for the new generation. Shop long-lasting fragrances for men, women & unisex. Free shipping on orders above ₹999. Made in India.",
+    "XPerfumes offers premium luxury perfumes for the new generation. Shop long-lasting fragrances for men, women & unisex. Free shipping on orders above ₹999. Made in India.",
   keywords: [
-    "VYBZ perfume",
+    "XPerfumes perfume",
     "luxury perfumes India",
     "premium fragrances",
     "perfumes for Gen Z",
@@ -41,34 +41,34 @@ export const metadata: Metadata = {
     "buy perfumes online India",
     "affordable luxury perfumes",
     "Indian perfume brand",
-    "VYBZ fragrances",
+    "XPerfumes fragrances",
     "eau de parfum India",
     "best perfumes 2026",
     "trending perfumes India"
   ],
-  authors: [{ name: "VYBZ" }],
-  creator: "VYBZ",
-  publisher: "VYBZ",
+  authors: [{ name: "XPerfumes" }],
+  creator: "XPerfumes",
+  publisher: "XPerfumes",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://vybz.in'),
+  metadataBase: new URL('https://xperfumes.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "VYBZ - Premium Perfumes for Gen Z | Luxury Fragrances India",
+    title: "XPerfumes - Premium Perfumes for Gen Z | Luxury Fragrances India",
     description: "Shop premium long-lasting perfumes for men, women & unisex. Free shipping above ₹999. Made in India for the new generation.",
-    url: 'https://vybz.in',
-    siteName: 'VYBZ',
+    url: 'https://xperfumes.in',
+    siteName: 'XPerfumes',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'VYBZ Premium Perfumes',
+        alt: 'XPerfumes Premium Perfumes',
       },
     ],
     locale: 'en_IN',
@@ -76,10 +76,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VYBZ - Premium Perfumes for Gen Z',
+    title: 'XPerfumes - Premium Perfumes for Gen Z',
     description: 'Shop premium long-lasting perfumes. Free shipping above ₹999. Made in India.',
     images: ['/og-image.jpg'],
-    creator: '@VYBZOFFICIAL',
+    creator: '@XPERFUMES',
   },
   robots: {
     index: true,
@@ -111,7 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${bebasNeue.variable}`}>
       <head>
-        <link rel="canonical" href="https://vybz.in" />
+        <link rel="canonical" href="https://xperfumes.in" />
         <meta name="theme-color" content="#14161d" />
         <script
           type="application/ld+json"
@@ -119,20 +119,20 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "VYBZ",
-              "url": "https://vybz.in",
-              "logo": "https://vybz.in/icon.png",
+              "name": "XPerfumes",
+              "url": "https://xperfumes.in",
+              "logo": "https://xperfumes.in/icon.png",
               "description": "Premium luxury perfumes for the new generation. Made in India.",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "hello@vybz.in",
+                "email": "hello@xperfumes.in",
                 "contactType": "Customer Service",
                 "areaServed": "IN",
                 "availableLanguage": ["English", "Hindi"]
               },
               "sameAs": [
-                "https://instagram.com/vybzofficial",
-                "https://twitter.com/vybzofficial"
+                "https://instagram.com/xperfumes",
+                "https://twitter.com/xperfumes"
               ],
               "address": {
                 "@type": "PostalAddress",
@@ -147,11 +147,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "VYBZ",
-              "url": "https://vybz.in",
+              "name": "XPerfumes",
+              "url": "https://xperfumes.in",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://vybz.in/shop?q={search_term_string}",
+                "target": "https://xperfumes.in/shop?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

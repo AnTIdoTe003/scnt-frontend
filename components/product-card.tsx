@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Heart, ShoppingBag } from "lucide-react"
 import { useState } from "react"
 import { formatINR } from "@/lib/currency"
@@ -19,6 +20,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ name, price, notes, slug, image, variantId, availableForSale = true }: ProductCardProps) {
+  const router = useRouter()
   const [isLiked, setIsLiked] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [adding, setAdding] = useState(false)
@@ -38,7 +40,7 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
       <Link href={`/product/${slug}`}>
         <div className="relative rounded-2xl overflow-hidden glass-card hover:glow-subtle transition-all duration-500 hover:-translate-y-1">
           {/* Product Image */}
-          <div className="relative h-72 bg-gradient-to-b from-secondary/70 to-background overflow-hidden">
+          <div className="relative h-72 bg-linear-to-b from-secondary/70 to-background overflow-hidden">
             <Image
               src={displayImage}
               alt={name}
@@ -50,7 +52,7 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
 
             {/* Overlay gradient on hover */}
             <div
-              className={`absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-accent/10 transition-opacity duration-500 ${
+              className={`absolute inset-0 bg-linear-to-t from-primary/10 via-transparent to-accent/10 transition-opacity duration-500 ${
                 isHovered ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -62,8 +64,10 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
               }`}
             >
               <button
+                type="button"
                 onClick={(e) => {
                   e.preventDefault()
+                  e.stopPropagation()
                   setIsLiked(!isLiked)
                 }}
                 className={`p-2 glass-card rounded-xl hover:scale-110 transition-all duration-300 ${
@@ -90,8 +94,10 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
                 </div>
               ) : variantId ? (
                 <button
+                  type="button"
                   onClick={async (e) => {
                     e.preventDefault()
+                    e.stopPropagation()
                     setAdding(true)
                     try {
                       await addToCart(variantId, 1)
@@ -106,12 +112,17 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
                   {adding ? "ADDING..." : "ADD TO BAG"}
                 </button>
               ) : (
-                <Link
-                  href={`/product/${slug}`}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    router.push(`/product/${slug}`)
+                  }}
                   className="block w-full py-3 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm text-center hover:scale-[1.02] transition-all duration-300"
                 >
                   VIEW PRODUCT
-                </Link>
+                </button>
               )}
             </div>
           </div>

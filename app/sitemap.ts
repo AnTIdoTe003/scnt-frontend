@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllProductsAsync } from '@/lib/products'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://vybz.in'
+  const baseUrl = 'https://xperfumes.in'
 
   // Get all products (from Shopify or static fallback)
   const products = await getAllProductsAsync()
