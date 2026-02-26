@@ -18,7 +18,7 @@ Your perfume brand is now **VYBZ** (pronounced "vibes") - a unique, Gen Z-friend
 ### Unique & Available
 - ✅ No existing perfume brand with this name
 - ✅ Domain available: `vybz.in` or `vybzperfumes.com`
-- ✅ Social handles available: @VYBZOFFICIAL
+- ✅ Social handles available: @xperfumes.in (Instagram)
 - ✅ Trademark-friendly
 
 ### Brand Positioning
@@ -70,7 +70,7 @@ Your perfume brand is now **VYBZ** (pronounced "vibes") - a unique, Gen Z-friend
 - Press: `press@vybz.in`
 
 ### Social Media
-- Instagram: `@VYBZOFFICIAL`
+- Instagram: `@xperfumes.in`
 - Twitter/X: `@VYBZOFFICIAL`
 - TikTok: `@VYBZOFFICIAL`
 - YouTube: `VYBZ Official`
@@ -332,7 +332,7 @@ Let's see those vibes! 🔥
 ### Immediate (This Week)
 1. ✅ Rebrand complete (DONE!)
 2. [ ] Register domain: vybz.in
-3. [ ] Create @VYBZOFFICIAL on Instagram
+3. [ ] Create @xperfumes.in on Instagram
 4. [ ] Create @VYBZOFFICIAL on Twitter
 5. [ ] Design logo files (PNG, SVG)
 6. [ ] Order sample bottles

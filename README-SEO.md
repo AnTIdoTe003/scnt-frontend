@@ -77,7 +77,7 @@ Your VYBZ perfume website now has **enterprise-level SEO** that will help you ra
 
 ### Step 3: Social Media (5 min)
 ```bash
-Instagram: @VYBZOFFICIAL
+Instagram: @xperfumes.in
 Twitter: @VYBZOFFICIAL
 Add website link in bio
 ```

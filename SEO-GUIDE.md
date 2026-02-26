@@ -91,7 +91,7 @@
   - Set up conversion goals (Add to Cart, Purchase)
 
 #### 4. **Social Media Verification**
-- Instagram: @VYBZOFFICIAL
+- Instagram: @xperfumes.in
 - Twitter: @VYBZOFFICIAL
 - Link back to website in bio
 - Use consistent branding

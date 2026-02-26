@@ -76,7 +76,7 @@ Your website now has **enterprise-level SEO** built-in:
 ### Step 4: Social Media Setup (5 min)
 ```
 Instagram:
-1. Create account: @VYBZOFFICIAL
+1. Create account: @xperfumes.in
 2. Add bio: "Premium perfumes for Gen Z 🔥 Made in India 🇮🇳"
 3. Add link: https://vybz.in
 4. Post product photos

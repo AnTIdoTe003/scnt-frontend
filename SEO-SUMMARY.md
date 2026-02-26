@@ -140,7 +140,7 @@ Your website is optimized for these high-value keywords:
    - Verify business
 
 4. **Social Media**
-   - Create @VYBZOFFICIAL on Instagram
+   - Create @xperfumes.in on Instagram
    - Create @VYBZOFFICIAL on Twitter
    - Add website link to bio
    - Post first 3 products

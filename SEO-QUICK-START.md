@@ -32,7 +32,7 @@ Your website has enterprise-level SEO built-in. Everything technical is ready!
 ### 3. Social Media (5 min)
 ```
 Instagram:
-- Username: @VYBZOFFICIAL
+- Username: @xperfumes.in
 - Bio: "Premium perfumes for Gen Z 🔥 Made in India 🇮🇳"
 - Link: https://vybz.in
 

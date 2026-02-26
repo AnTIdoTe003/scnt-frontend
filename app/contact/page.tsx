@@ -120,7 +120,9 @@ export default function ContactPage() {
             </p>
             <div className="flex items-center justify-center gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/xperfumes.in/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 glass-card hover:bg-primary/20 rounded-xl font-space font-bold text-sm hover:scale-105 transition-all duration-300"
               >
                 Instagram

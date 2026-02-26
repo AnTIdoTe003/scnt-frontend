@@ -128,7 +128,9 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/xperfumes.in/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 glass-card rounded-xl hover:glow-primary hover:scale-110 hover:-rotate-6 transition-all duration-300 group"
               >
                 <Instagram className="w-5 h-5 text-foreground group-hover:scale-110 transition-transform" />

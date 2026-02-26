@@ -42,7 +42,7 @@
 - [ ] Submit to Google Shopping (if applicable)
 
 ### Social Media
-- [ ] Create Instagram: @VYBZOFFICIAL
+- [ ] Create Instagram: @xperfumes.in
 - [ ] Create Twitter: @VYBZOFFICIAL
 - [ ] Add website link to all profiles
 - [ ] Post first 3 product photos

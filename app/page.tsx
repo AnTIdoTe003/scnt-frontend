@@ -6,10 +6,13 @@ import { ChevronRight, ChevronDown, Sparkles, Zap, Heart, Star, Play, Clock, Fla
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ProductCard } from "@/components/product-card"
+import { LaunchCountdown } from "@/components/launch-countdown"
+import { LAUNCH_COUNTDOWN_ENABLED } from "@/lib/feature-config"
 
 export default function Home() {
   return (
     <>
+      {LAUNCH_COUNTDOWN_ENABLED && <LaunchCountdown />}
       <Header />
       <main className="pt-10">
         {/* Hero Section */}
@@ -374,7 +377,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
                 <Instagram className="w-4 h-4 text-pink-500" />
-                <span className="text-sm font-space font-bold">@XPERFUMES</span>
+                <span className="text-sm font-space font-bold">@XPERFUMES.IN</span>
               </div>
               <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
                 JOIN THE COMMUNITY
@@ -401,7 +404,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-8">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/xperfumes.in/" target="_blank" rel="noopener noreferrer">
                 <button className="px-8 py-4 glass-card border border-pink-500/50 hover:bg-pink-500/10 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 text-pink-500">
                   <Instagram className="w-5 h-5" />
                   FOLLOW US ON INSTAGRAM

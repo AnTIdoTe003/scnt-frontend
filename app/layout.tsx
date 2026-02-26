@@ -4,6 +4,7 @@ import { Space_Grotesk, DM_Sans, Bebas_Neue } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { CartProvider } from "@/contexts/cart-context"
 import { CartDrawer } from "@/components/cart-drawer"
+import { OfferPopupWrapper } from "@/components/offer-popup-wrapper"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -131,7 +132,7 @@ export default function RootLayout({
                 "availableLanguage": ["English", "Hindi"]
               },
               "sameAs": [
-                "https://instagram.com/xperfumes",
+                "https://www.instagram.com/xperfumes.in/",
                 "https://twitter.com/xperfumes"
               ],
               "address": {
@@ -162,6 +163,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <CartDrawer />
+          <OfferPopupWrapper />
         </CartProvider>
         <Analytics />
       </body>
