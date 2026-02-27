@@ -1,587 +1,771 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { ChevronRight, ChevronDown, Sparkles, Zap, Heart, Star, Play, Clock, Flame, TrendingUp, Quote, Instagram, Send, Gift, Truck, Shield, ArrowRight } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ProductCard } from "@/components/product-card"
-import { LaunchCountdown } from "@/components/launch-countdown"
-import { LAUNCH_COUNTDOWN_ENABLED } from "@/lib/feature-config"
+import Link from "next/link";
+import Image from "next/image";
+import {
+  ChevronRight,
+  ChevronDown,
+  Sparkles,
+  Zap,
+  Heart,
+  Star,
+  Play,
+  Clock,
+  Flame,
+  TrendingUp,
+  Quote,
+  Instagram,
+  Send,
+  Gift,
+  Truck,
+  Shield,
+  ArrowRight,
+} from "lucide-react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { ProductCard } from "@/components/product-card";
+import { LaunchCountdown } from "@/components/launch-countdown";
+import { LAUNCH_COUNTDOWN_ENABLED } from "@/lib/feature-config";
 
 export default function Home() {
   return (
     <>
-      {LAUNCH_COUNTDOWN_ENABLED && <LaunchCountdown />}
-      <Header />
-      <main className="pt-10">
-        {/* Hero Section */}
-        <section className="relative h-[calc(100vh-5rem)] min-h-[600px] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <Image
-            src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1920"
-            alt="Luxury perfume bottles in moody lighting"
-            fill
-            priority
-            className="object-cover"
-          />
+      <LaunchCountdown />
+      {!LAUNCH_COUNTDOWN_ENABLED && (
+        <>
+          {" "}
+          <Header />
+          <main className="pt-10">
+            {/* Hero Section */}
+            <section className="relative h-[calc(100vh-5rem)] min-h-[600px] flex items-center justify-center overflow-hidden">
+              {/* Background Image */}
+              <Image
+                src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=1920"
+                alt="Luxury perfume bottles in moody lighting"
+                fill
+                priority
+                className="object-cover"
+              />
 
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/30" />
-          <div className="absolute inset-0 hero-vignette" />
+              {/* Gradient overlays */}
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/30" />
+              <div className="absolute inset-0 hero-vignette" />
 
-          {/* Content */}
-          <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-            {/* Badge */}
-            <div className="mb-10 inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm scale-fade-in">
-              <span className="text-xs font-space font-bold tracking-[0.25em] text-amber-300/90">
-                PREMIUM INDIAN FRAGRANCE
-              </span>
-            </div>
-
-            {/* Main Heading */}
-            <h1 className="font-bebas leading-[0.9] mb-8 slide-in-bottom">
-              <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
-                SCENT THE <span className="text-amber-400">NIGHT.</span>
-              </span>
-              <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
-                OWN THE <span className="text-amber-400">DAY.</span>
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base md:text-xl text-white/70 mb-12 max-w-2xl font-dm leading-relaxed slide-in-bottom" style={{ animationDelay: "0.2s" }}>
-              Premium fragrances crafted for the bold. Long-lasting, compliment-worthy, unapologetically you.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 items-center slide-in-bottom" style={{ animationDelay: "0.4s" }}>
-              <Link href="/shop">
-                <button className="group px-10 py-4 bg-linear-to-r from-amber-500 to-amber-700 text-white rounded-full font-space font-bold text-sm tracking-wider hover:scale-105 transition-all duration-300 shadow-[0_8px_32px_rgba(183,139,91,0.4)] flex items-center gap-3">
-                  SHOP THE DROP
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </Link>
-              <Link href="/about">
-                <button className="group px-10 py-4 border border-white/30 text-white rounded-full font-space font-bold text-sm tracking-wider hover:bg-white/10 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm">
-                  <Play className="w-4 h-4" />
-                  OUR STORY
-                </button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 scale-fade-in" style={{ animationDelay: "0.8s" }}>
-            <span className="text-[10px] font-space font-bold tracking-[0.3em] text-white/40 uppercase">Scroll</span>
-            <ChevronDown className="w-5 h-5 text-white/40 bounce-subtle" />
-          </div>
-        </section>
-
-        {/* Marquee Banner */}
-        <section className="py-4 bg-linear-to-r from-primary via-accent to-primary overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(10)].map((_, i) => (
-              <span key={i} className="mx-8 text-white font-space font-bold text-sm tracking-widest flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
-                FREE SHIPPING ON ₹999+
-                <span className="mx-4">•</span>
-                <Zap className="w-4 h-4" />
-                EASY RETURNS
-                <span className="mx-4">•</span>
-                <Gift className="w-4 h-4" />
-                COMPLIMENTARY SAMPLES
-                <span className="mx-4">•</span>
-                <Flame className="w-4 h-4" />
-                NEW DROP EVERY MONTH
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* Trending Section - TikTok Style */}
-        <section className="py-20 px-4 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-pink-500 to-purple-500 rounded-full">
-                <TrendingUp className="w-4 h-4 text-white" />
-                <span className="text-white font-space font-bold text-sm">TRENDING NOW</span>
-              </div>
-              <span className="text-muted-foreground font-dm">What Gen Z is obsessed with rn</span>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { name: "Midnight Essence", tag: "#1 Bestseller", sold: "2.3K sold", image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400", slug: "midnight-essence" },
-                { name: "Night Bloom", tag: "Viral on Insta", sold: "1.8K sold", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400", slug: "night-bloom" },
-                { name: "Obsidian", tag: "Date Night Fav", sold: "1.5K sold", image: "https://images.unsplash.com/photo-1585120040315-2241b774ad0f?auto=format&fit=crop&q=80&w=400", slug: "obsidian" },
-                { name: "Ethereal", tag: "Clean Girl Era", sold: "1.2K sold", image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=400", slug: "ethereal" },
-              ].map((item, index) => (
-                <Link key={item.name} href={`/product/${item.slug}`}>
-                  <div className="group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer scale-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <Image src={item.image} alt={item.name} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                    <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 bg-accent text-xs font-space font-bold rounded-full text-black">{item.tag}</span>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white font-bebas text-2xl mb-1">{item.name}</h3>
-                      <p className="text-white/70 text-sm font-dm">{item.sold}</p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Find Your Scent Quiz CTA */}
-        <section className="py-16 px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden glass-card border border-primary/20">
-              <div className="absolute inset-0 bg-linear-to-r from-primary/10 via-transparent to-accent/10" />
-              <div className="relative grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 glass-card rounded-full mb-4">
-                    <Sparkles className="w-4 h-4 text-accent" />
-                    <span className="text-xs font-space font-bold gradient-text">2 MIN QUIZ</span>
-                  </div>
-                  <h2 className="text-4xl md:text-5xl font-bebas mb-4">
-                    <span className="gradient-text">NOT SURE WHERE</span>
-                    <br />
-                    <span className="text-foreground">TO START?</span>
-                  </h2>
-                  <p className="text-muted-foreground font-dm mb-6">
-                    Take our quick quiz and discover your perfect signature scent based on your vibe, personality, and lifestyle. No cap, it's lowkey accurate. 🎯
-                  </p>
-                  <button className="group px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                    FIND MY SCENT
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+              {/* Content */}
+              <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+                {/* Badge */}
+                <div className="mb-10 inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm scale-fade-in">
+                  <span className="text-xs font-space font-bold tracking-[0.25em] text-amber-300/90">
+                    PREMIUM INDIAN FRAGRANCE
+                  </span>
                 </div>
-                <div className="relative h-64 md:h-full min-h-[300px]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=600"
-                    alt="Find your scent"
-                    fill
-                    className="object-cover rounded-2xl"
-                  />
+
+                {/* Main Heading */}
+                <h1 className="font-bebas leading-[0.9] mb-8 slide-in-bottom">
+                  <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
+                    SCENT THE <span className="text-amber-400">NIGHT.</span>
+                  </span>
+                  <span className="block text-6xl md:text-8xl lg:text-[10rem] text-white">
+                    OWN THE <span className="text-amber-400">DAY.</span>
+                  </span>
+                </h1>
+
+                {/* Subtitle */}
+                <p
+                  className="text-base md:text-xl text-white/70 mb-12 max-w-2xl font-dm leading-relaxed slide-in-bottom"
+                  style={{ animationDelay: "0.2s" }}
+                >
+                  Premium fragrances crafted for the bold. Long-lasting,
+                  compliment-worthy, unapologetically you.
+                </p>
+
+                {/* CTA Buttons */}
+                <div
+                  className="flex flex-col sm:flex-row gap-4 items-center slide-in-bottom"
+                  style={{ animationDelay: "0.4s" }}
+                >
+                  <Link href="/shop">
+                    <button className="group px-10 py-4 bg-linear-to-r from-amber-500 to-amber-700 text-white rounded-full font-space font-bold text-sm tracking-wider hover:scale-105 transition-all duration-300 shadow-[0_8px_32px_rgba(183,139,91,0.4)] flex items-center gap-3">
+                      SHOP THE DROP
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </Link>
+                  <Link href="/about">
+                    <button className="group px-10 py-4 border border-white/30 text-white rounded-full font-space font-bold text-sm tracking-wider hover:bg-white/10 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm">
+                      <Play className="w-4 h-4" />
+                      OUR STORY
+                    </button>
+                  </Link>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Category Highlights */}
-        <section className="py-20 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-accent/50 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/50 rounded-full blur-3xl" />
-          </div>
+              {/* Scroll indicator */}
+              <div
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 scale-fade-in"
+                style={{ animationDelay: "0.8s" }}
+              >
+                <span className="text-[10px] font-space font-bold tracking-[0.3em] text-white/40 uppercase">
+                  Scroll
+                </span>
+                <ChevronDown className="w-5 h-5 text-white/40 bounce-subtle" />
+              </div>
+            </section>
 
-          <div className="relative max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-5xl md:text-7xl font-bebas mb-4">
-                <span className="gradient-text">FIND YOUR VIBE</span>
-              </h2>
-              <p className="text-lg text-muted-foreground font-dm">
-                Every scent tells a story. What's yours? ✨
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "For Him",
-                  href: "/men",
-                  emoji: "🔥",
-                  color: "from-blue-600/30 to-purple-600/30",
-                  description: "Bold & Powerful",
-                  tagline: "Main character energy",
-                  image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                  title: "For Her",
-                  href: "/women",
-                  emoji: "✨",
-                  color: "from-pink-600/30 to-purple-600/30",
-                  description: "Elegant & Fierce",
-                  tagline: "That girl aesthetic",
-                  image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800"
-                },
-                {
-                  title: "Unisex",
-                  href: "/unisex",
-                  emoji: "💫",
-                  color: "from-purple-600/30 to-cyan-600/30",
-                  description: "Beyond Labels",
-                  tagline: "No rules, just vibes",
-                  image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=800"
-                },
-              ].map((cat, index) => (
-                <Link key={cat.title} href={cat.href}>
-                  <div
-                    className={`group relative h-[450px] rounded-3xl overflow-hidden glass-card hover:glow-primary transition-all duration-500 cursor-pointer hover:-translate-y-4 hover:rotate-1 scale-fade-in`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
+            {/* Marquee Banner */}
+            <section className="py-4 bg-linear-to-r from-primary via-accent to-primary overflow-hidden">
+              <div className="flex animate-marquee whitespace-nowrap">
+                {[...Array(10)].map((_, i) => (
+                  <span
+                    key={i}
+                    className="mx-8 text-white font-space font-bold text-sm tracking-widest flex items-center gap-2"
                   >
-                    <div className={`absolute inset-0 bg-linear-to-b ${cat.color} group-hover:opacity-80 transition-opacity`} />
-                    <Image
-                      src={cat.image}
-                      alt={cat.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-all duration-700"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
-
-                    <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-8">
-                      <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-300">
-                        {cat.emoji}
-                      </div>
-                      <h3 className="text-4xl font-bebas text-white mb-1 group-hover:scale-110 transition-transform">
-                        {cat.title}
-                      </h3>
-                      <p className="text-white/80 font-space text-sm mb-2">{cat.description}</p>
-                      <p className="text-accent font-dm text-sm italic mb-4">{cat.tagline}</p>
-                      <div className="flex items-center gap-2 text-white font-space font-bold text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-4 px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full">
-                        EXPLORE
-                        <ChevronRight className="w-4 h-4" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Best Sellers */}
-        <section className="py-20 px-4 bg-secondary/30 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-3xl pulse-glow" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-12">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Flame className="w-6 h-6 text-orange-500" />
-                  <span className="text-sm font-space font-bold text-orange-500">HOT RIGHT NOW</span>
-                </div>
-                <h2 className="text-5xl md:text-7xl font-bebas mb-2">
-                  <span className="gradient-text">BESTSELLERS</span>
-                </h2>
-                <p className="text-lg text-muted-foreground font-dm">The scents everyone's talking about 💬</p>
+                    <Sparkles className="w-4 h-4" />
+                    FREE SHIPPING ON ₹999+
+                    <span className="mx-4">•</span>
+                    <Zap className="w-4 h-4" />
+                    EASY RETURNS
+                    <span className="mx-4">•</span>
+                    <Gift className="w-4 h-4" />
+                    COMPLIMENTARY SAMPLES
+                    <span className="mx-4">•</span>
+                    <Flame className="w-4 h-4" />
+                    NEW DROP EVERY MONTH
+                  </span>
+                ))}
               </div>
-              <Link href="/shop">
-                <button className="hidden md:flex items-center gap-2 px-6 py-3 glass-card hover:bg-primary/20 rounded-xl font-space font-bold text-sm hover:scale-105 transition-all duration-300">
-                  VIEW ALL
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </Link>
-            </div>
+            </section>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { name: "Midnight Essence", price: "₹2,499", notes: "Woody, Spicy", slug: "midnight-essence" },
-                { name: "Night Bloom", price: "₹2,799", notes: "Floral, Citrus", slug: "night-bloom" },
-                { name: "Shadow", price: "₹2,199", notes: "Woody, Amber", slug: "shadow" },
-                { name: "Obsidian", price: "₹2,999", notes: "Spicy, Oriental", slug: "obsidian" },
-              ].map((product) => (
-                <ProductCard key={product.name} {...product} />
-              ))}
-            </div>
-
-            <Link href="/shop">
-              <button className="md:hidden mt-8 w-full flex items-center justify-center gap-2 px-6 py-4 glass-card hover:bg-primary/20 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300">
-                VIEW ALL PRODUCTS
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </Link>
-          </div>
-        </section>
-
-        {/* Social Proof - Reviews */}
-        <section className="py-20 px-4 overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
-                <Star className="w-4 h-4 text-accent fill-accent" />
-                <span className="text-sm font-space font-bold">4.9/5 FROM 2,847 REVIEWS</span>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
-                THE HYPE IS REAL
-              </h2>
-              <p className="text-muted-foreground font-dm">Don't just take our word for it 👀</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "Priya S.",
-                  location: "Mumbai",
-                  review: "Literally got 5 compliments on my first day wearing Midnight Essence. The longevity is INSANE - lasted through my entire 12-hour shift. 10/10 no cap 🔥",
-                  product: "Midnight Essence",
-                  rating: 5,
-                  avatar: "P"
-                },
-                {
-                  name: "Arjun M.",
-                  location: "Delhi",
-                  review: "Finally found a fragrance that doesn't smell like my dad's cologne but still feels premium. Obsidian is the perfect balance of sophisticated and youthful. Main character vibes fr.",
-                  product: "Obsidian",
-                  rating: 5,
-                  avatar: "A"
-                },
-                {
-                  name: "Sneha R.",
-                  location: "Bangalore",
-                  review: "Night Bloom is giving everything it was supposed to give. Got it for my bestie's birthday and now we're both obsessed. The packaging is so aesthetic too! 💜",
-                  product: "Night Bloom",
-                  rating: 5,
-                  avatar: "S"
-                },
-              ].map((review, index) => (
-                <div
-                  key={review.name}
-                  className="glass-card p-6 rounded-2xl hover:glow-subtle transition-all duration-300 scale-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-accent fill-accent" />
-                    ))}
-                  </div>
-                  <Quote className="w-8 h-8 text-primary/30 mb-3" />
-                  <p className="text-foreground font-dm mb-4 leading-relaxed">{review.review}</p>
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
-                        {review.avatar}
-                      </div>
-                      <div>
-                        <p className="font-space font-bold text-sm">{review.name}</p>
-                        <p className="text-xs text-muted-foreground">{review.location}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs text-primary font-space">{review.product}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Instagram Style Grid */}
-        <section className="py-20 px-4 bg-secondary/30">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
-                <Instagram className="w-4 h-4 text-pink-500" />
-                <span className="text-sm font-space font-bold">@XPERFUMES.IN</span>
-              </div>
-              <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
-                JOIN THE COMMUNITY
-              </h2>
-              <p className="text-muted-foreground font-dm">Tag us in your pics for a chance to be featured ✨</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
-              {[
-                "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=300",
-                "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=300",
-                "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=300",
-                "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=300",
-                "https://images.unsplash.com/photo-1585120040315-2241b774ad0f?auto=format&fit=crop&q=80&w=300",
-                "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=300",
-              ].map((src, index) => (
-                <div key={index} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer">
-                  <Image src={src} alt={`Community post ${index + 1}`} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Heart className="w-8 h-8 text-white" />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <a href="https://www.instagram.com/xperfumes.in/" target="_blank" rel="noopener noreferrer">
-                <button className="px-8 py-4 glass-card border border-pink-500/50 hover:bg-pink-500/10 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 text-pink-500">
-                  <Instagram className="w-5 h-5" />
-                  FOLLOW US ON INSTAGRAM
-                </button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Features/USP */}
-        <section className="py-20 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
-                WHY XPERFUMES?
-              </h2>
-              <p className="text-muted-foreground font-dm">We're not like other perfume brands fr fr</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: <Shield className="w-7 h-7" />,
-                  title: "100% Authentic",
-                  description: "Premium ingredients, zero compromises",
-                },
-                {
-                  icon: <Clock className="w-7 h-7" />,
-                  title: "8-10hr Longevity",
-                  description: "All-day confidence guaranteed",
-                },
-                {
-                  icon: <Truck className="w-7 h-7" />,
-                  title: "Free Shipping",
-                  description: "On orders above ₹999",
-                },
-                {
-                  icon: <Gift className="w-7 h-7" />,
-                  title: "Free Samples",
-                  description: "With every order",
-                },
-              ].map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className={`glass-card p-6 rounded-2xl hover:glow-subtle transition-all duration-500 hover:-translate-y-2 text-center scale-fade-in`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br from-primary to-accent text-white mb-4 hover:scale-110 hover:rotate-6 transition-all duration-300">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bebas gradient-text mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground font-dm text-sm">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Limited Drop / FOMO Section */}
-        <section className="py-20 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-accent/5 to-primary/5" />
-          <div className="relative max-w-5xl mx-auto">
-            <div className="glass-card rounded-3xl overflow-hidden border border-accent/30">
-              <div className="grid md:grid-cols-2">
-                <div className="relative h-64 md:h-auto min-h-[400px]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800"
-                    alt="Limited Edition"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-4 py-2 bg-accent text-black font-space font-bold text-sm rounded-full animate-pulse">
-                      LIMITED EDITION
+            {/* Trending Section - TikTok Style */}
+            <section className="py-20 px-4 relative overflow-hidden">
+              <div className="max-w-7xl mx-auto">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-pink-500 to-purple-500 rounded-full">
+                    <TrendingUp className="w-4 h-4 text-white" />
+                    <span className="text-white font-space font-bold text-sm">
+                      TRENDING NOW
                     </span>
                   </div>
+                  <span className="text-muted-foreground font-dm">
+                    What Gen Z is obsessed with rn
+                  </span>
                 </div>
-                <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Clock className="w-5 h-5 text-accent" />
-                    <span className="text-accent font-space font-bold text-sm">DROPPING SOON</span>
-                  </div>
-                  <h2 className="text-4xl md:text-5xl font-bebas mb-4">
-                    <span className="gradient-text">SUMMER</span>
-                    <br />
-                    <span className="text-foreground">COLLECTION 2026</span>
-                  </h2>
-                  <p className="text-muted-foreground font-dm mb-6">
-                    Fresh, citrusy, and perfect for the hot girl summer. Only 500 bottles available. Join the waitlist to get early access. 🌴
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 glass-card border border-accent/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 font-dm"
-                    />
-                    <button className="px-6 py-3 bg-accent text-black rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                      <Send className="w-4 h-4" />
-                      NOTIFY ME
-                    </button>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-4 font-dm">
-                    🔒 247 people already on the waitlist
-                  </p>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {[
+                    {
+                      name: "Midnight Essence",
+                      tag: "#1 Bestseller",
+                      sold: "2.3K sold",
+                      image:
+                        "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400",
+                      slug: "midnight-essence",
+                    },
+                    {
+                      name: "Night Bloom",
+                      tag: "Viral on Insta",
+                      sold: "1.8K sold",
+                      image:
+                        "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=400",
+                      slug: "night-bloom",
+                    },
+                    {
+                      name: "Obsidian",
+                      tag: "Date Night Fav",
+                      sold: "1.5K sold",
+                      image:
+                        "https://images.unsplash.com/photo-1585120040315-2241b774ad0f?auto=format&fit=crop&q=80&w=400",
+                      slug: "obsidian",
+                    },
+                    {
+                      name: "Ethereal",
+                      tag: "Clean Girl Era",
+                      sold: "1.2K sold",
+                      image:
+                        "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=400",
+                      slug: "ethereal",
+                    },
+                  ].map((item, index) => (
+                    <Link key={item.name} href={`/product/${item.slug}`}>
+                      <div
+                        className="group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer scale-fade-in"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute top-3 left-3">
+                          <span className="px-3 py-1 bg-accent text-xs font-space font-bold rounded-full text-black">
+                            {item.tag}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <h3 className="text-white font-bebas text-2xl mb-1">
+                            {item.name}
+                          </h3>
+                          <p className="text-white/70 text-sm font-dm">
+                            {item.sold}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        {/* Brand Story */}
-        <section className="py-20 px-4 bg-secondary/30 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/50 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/50 rounded-full blur-3xl" />
-          </div>
+            {/* Find Your Scent Quiz CTA */}
+            <section className="py-16 px-4">
+              <div className="max-w-5xl mx-auto">
+                <div className="relative rounded-3xl overflow-hidden glass-card border border-primary/20">
+                  <div className="absolute inset-0 bg-linear-to-r from-primary/10 via-transparent to-accent/10" />
+                  <div className="relative grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center">
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 glass-card rounded-full mb-4">
+                        <Sparkles className="w-4 h-4 text-accent" />
+                        <span className="text-xs font-space font-bold gradient-text">
+                          2 MIN QUIZ
+                        </span>
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-bebas mb-4">
+                        <span className="gradient-text">NOT SURE WHERE</span>
+                        <br />
+                        <span className="text-foreground">TO START?</span>
+                      </h2>
+                      <p className="text-muted-foreground font-dm mb-6">
+                        Take our quick quiz and discover your perfect signature
+                        scent based on your vibe, personality, and lifestyle. No
+                        cap, it's lowkey accurate. 🎯
+                      </p>
+                      <button className="group px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                        FIND MY SCENT
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </button>
+                    </div>
+                    <div className="relative h-64 md:h-full min-h-[300px]">
+                      <Image
+                        src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=600"
+                        alt="Find your scent"
+                        fill
+                        className="object-cover rounded-2xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-          <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
-              <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
-              <span className="text-xs font-space font-bold tracking-widest">OUR STORY</span>
-            </div>
-            <h2 className="text-5xl md:text-7xl font-bebas mb-8">
-              <span className="gradient-text">BORN FOR THE</span>
-              <br />
-              <span className="text-foreground">NEW GENERATION</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-6 font-dm leading-relaxed">
-              XPerfumes was created by perfume lovers who were tired of fragrances that smelled like our parents' generation. We wanted something
-              <span className="text-primary font-semibold"> fresh</span>,{" "}
-              <span className="text-accent font-semibold">bold</span>, and{" "}
-              <span className="gradient-text font-semibold">unapologetically us</span>.
-            </p>
-            <p className="text-lg text-muted-foreground mb-8 font-dm">
-              Every bottle is crafted with premium ingredients, designed for all-day performance, and made to turn heads. Because you deserve a scent that matches your main character energy. 🌟
-            </p>
-            <Link href="/about">
-              <button className="group px-8 py-4 glass-card border-2 border-primary/50 hover:bg-primary/20 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2">
-                READ OUR FULL STORY
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-          </div>
-        </section>
+            {/* Category Highlights */}
+            <section className="py-20 px-4 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 left-0 w-96 h-96 bg-accent/50 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/50 rounded-full blur-3xl" />
+              </div>
 
-        {/* Newsletter */}
-        <section className="py-20 px-4 border-t border-primary/20 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-linear-to-r from-primary to-accent rounded-full blur-3xl animate-pulse" />
-          </div>
+              <div className="relative max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-5xl md:text-7xl font-bebas mb-4">
+                    <span className="gradient-text">FIND YOUR VIBE</span>
+                  </h2>
+                  <p className="text-lg text-muted-foreground font-dm">
+                    Every scent tells a story. What's yours? ✨
+                  </p>
+                </div>
 
-          <div className="relative max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-xs font-space font-bold tracking-widest gradient-text">JOIN 10K+ SUBSCRIBERS</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bebas mb-4 gradient-text">STAY IN THE LOOP</h2>
-            <p className="text-lg text-muted-foreground mb-8 font-dm">
-              Be the first to know about new drops, exclusive deals, and insider vibes. Plus get <span className="text-accent font-bold">10% off</span> your first order! 🎁
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 glass-card border border-primary/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
-              />
-              <button className="px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 hover:rotate-1 transition-all duration-300 glow-primary shadow-2xl">
-                GET 10% OFF
-              </button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-4 font-dm">
-              No spam, just good vibes. Unsubscribe anytime. 🤝
-            </p>
-          </div>
-        </section>
-      </main>
-      <Footer />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      title: "For Him",
+                      href: "/men",
+                      emoji: "🔥",
+                      color: "from-blue-600/30 to-purple-600/30",
+                      description: "Bold & Powerful",
+                      tagline: "Main character energy",
+                      image:
+                        "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800",
+                    },
+                    {
+                      title: "For Her",
+                      href: "/women",
+                      emoji: "✨",
+                      color: "from-pink-600/30 to-purple-600/30",
+                      description: "Elegant & Fierce",
+                      tagline: "That girl aesthetic",
+                      image:
+                        "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=800",
+                    },
+                    {
+                      title: "Unisex",
+                      href: "/unisex",
+                      emoji: "💫",
+                      color: "from-purple-600/30 to-cyan-600/30",
+                      description: "Beyond Labels",
+                      tagline: "No rules, just vibes",
+                      image:
+                        "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=800",
+                    },
+                  ].map((cat, index) => (
+                    <Link key={cat.title} href={cat.href}>
+                      <div
+                        className={`group relative h-[450px] rounded-3xl overflow-hidden glass-card hover:glow-primary transition-all duration-500 cursor-pointer hover:-translate-y-4 hover:rotate-1 scale-fade-in`}
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <div
+                          className={`absolute inset-0 bg-linear-to-b ${cat.color} group-hover:opacity-80 transition-opacity`}
+                        />
+                        <Image
+                          src={cat.image}
+                          alt={cat.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-all duration-700"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent" />
+
+                        <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-8">
+                          <div className="text-5xl mb-4 group-hover:scale-125 transition-transform duration-300">
+                            {cat.emoji}
+                          </div>
+                          <h3 className="text-4xl font-bebas text-white mb-1 group-hover:scale-110 transition-transform">
+                            {cat.title}
+                          </h3>
+                          <p className="text-white/80 font-space text-sm mb-2">
+                            {cat.description}
+                          </p>
+                          <p className="text-accent font-dm text-sm italic mb-4">
+                            {cat.tagline}
+                          </p>
+                          <div className="flex items-center gap-2 text-white font-space font-bold text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-y-0 translate-y-4 px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+                            EXPLORE
+                            <ChevronRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Best Sellers */}
+            <section className="py-20 px-4 bg-secondary/30 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-3xl pulse-glow" />
+              </div>
+
+              <div className="relative max-w-7xl mx-auto">
+                <div className="flex items-center justify-between mb-12">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Flame className="w-6 h-6 text-orange-500" />
+                      <span className="text-sm font-space font-bold text-orange-500">
+                        HOT RIGHT NOW
+                      </span>
+                    </div>
+                    <h2 className="text-5xl md:text-7xl font-bebas mb-2">
+                      <span className="gradient-text">BESTSELLERS</span>
+                    </h2>
+                    <p className="text-lg text-muted-foreground font-dm">
+                      The scents everyone's talking about 💬
+                    </p>
+                  </div>
+                  <Link href="/shop">
+                    <button className="hidden md:flex items-center gap-2 px-6 py-3 glass-card hover:bg-primary/20 rounded-xl font-space font-bold text-sm hover:scale-105 transition-all duration-300">
+                      VIEW ALL
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    {
+                      name: "Midnight Essence",
+                      price: "₹2,499",
+                      notes: "Woody, Spicy",
+                      slug: "midnight-essence",
+                    },
+                    {
+                      name: "Night Bloom",
+                      price: "₹2,799",
+                      notes: "Floral, Citrus",
+                      slug: "night-bloom",
+                    },
+                    {
+                      name: "Shadow",
+                      price: "₹2,199",
+                      notes: "Woody, Amber",
+                      slug: "shadow",
+                    },
+                    {
+                      name: "Obsidian",
+                      price: "₹2,999",
+                      notes: "Spicy, Oriental",
+                      slug: "obsidian",
+                    },
+                  ].map((product) => (
+                    <ProductCard key={product.name} {...product} />
+                  ))}
+                </div>
+
+                <Link href="/shop">
+                  <button className="md:hidden mt-8 w-full flex items-center justify-center gap-2 px-6 py-4 glass-card hover:bg-primary/20 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300">
+                    VIEW ALL PRODUCTS
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </Link>
+              </div>
+            </section>
+
+            {/* Social Proof - Reviews */}
+            <section className="py-20 px-4 overflow-hidden">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
+                    <Star className="w-4 h-4 text-accent fill-accent" />
+                    <span className="text-sm font-space font-bold">
+                      4.9/5 FROM 2,847 REVIEWS
+                    </span>
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
+                    THE HYPE IS REAL
+                  </h2>
+                  <p className="text-muted-foreground font-dm">
+                    Don't just take our word for it 👀
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    {
+                      name: "Priya S.",
+                      location: "Mumbai",
+                      review:
+                        "Literally got 5 compliments on my first day wearing Midnight Essence. The longevity is INSANE - lasted through my entire 12-hour shift. 10/10 no cap 🔥",
+                      product: "Midnight Essence",
+                      rating: 5,
+                      avatar: "P",
+                    },
+                    {
+                      name: "Arjun M.",
+                      location: "Delhi",
+                      review:
+                        "Finally found a fragrance that doesn't smell like my dad's cologne but still feels premium. Obsidian is the perfect balance of sophisticated and youthful. Main character vibes fr.",
+                      product: "Obsidian",
+                      rating: 5,
+                      avatar: "A",
+                    },
+                    {
+                      name: "Sneha R.",
+                      location: "Bangalore",
+                      review:
+                        "Night Bloom is giving everything it was supposed to give. Got it for my bestie's birthday and now we're both obsessed. The packaging is so aesthetic too! 💜",
+                      product: "Night Bloom",
+                      rating: 5,
+                      avatar: "S",
+                    },
+                  ].map((review, index) => (
+                    <div
+                      key={review.name}
+                      className="glass-card p-6 rounded-2xl hover:glow-subtle transition-all duration-300 scale-fade-in"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="flex items-center gap-1 mb-4">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-4 h-4 text-accent fill-accent"
+                          />
+                        ))}
+                      </div>
+                      <Quote className="w-8 h-8 text-primary/30 mb-3" />
+                      <p className="text-foreground font-dm mb-4 leading-relaxed">
+                        {review.review}
+                      </p>
+                      <div className="flex items-center justify-between pt-4 border-t border-border">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
+                            {review.avatar}
+                          </div>
+                          <div>
+                            <p className="font-space font-bold text-sm">
+                              {review.name}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {review.location}
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-xs text-primary font-space">
+                          {review.product}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Instagram Style Grid */}
+            <section className="py-20 px-4 bg-secondary/30">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-4">
+                    <Instagram className="w-4 h-4 text-pink-500" />
+                    <span className="text-sm font-space font-bold">
+                      @XPERFUMES.IN
+                    </span>
+                  </div>
+                  <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
+                    JOIN THE COMMUNITY
+                  </h2>
+                  <p className="text-muted-foreground font-dm">
+                    Tag us in your pics for a chance to be featured ✨
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                  {[
+                    "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=300",
+                    "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=300",
+                    "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?auto=format&fit=crop&q=80&w=300",
+                    "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=300",
+                    "https://images.unsplash.com/photo-1585120040315-2241b774ad0f?auto=format&fit=crop&q=80&w=300",
+                    "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=300",
+                  ].map((src, index) => (
+                    <div
+                      key={index}
+                      className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Community post ${index + 1}`}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Heart className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-center mt-8">
+                  <a
+                    href="https://www.instagram.com/xperfumes.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="px-8 py-4 glass-card border border-pink-500/50 hover:bg-pink-500/10 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 text-pink-500">
+                      <Instagram className="w-5 h-5" />
+                      FOLLOW US ON INSTAGRAM
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            {/* Features/USP */}
+            <section className="py-20 px-4">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-5xl md:text-6xl font-bebas gradient-text mb-4">
+                    WHY XPERFUMES?
+                  </h2>
+                  <p className="text-muted-foreground font-dm">
+                    We're not like other perfume brands fr fr
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  {[
+                    {
+                      icon: <Shield className="w-7 h-7" />,
+                      title: "100% Authentic",
+                      description: "Premium ingredients, zero compromises",
+                    },
+                    {
+                      icon: <Clock className="w-7 h-7" />,
+                      title: "8-10hr Longevity",
+                      description: "All-day confidence guaranteed",
+                    },
+                    {
+                      icon: <Truck className="w-7 h-7" />,
+                      title: "Free Shipping",
+                      description: "On orders above ₹999",
+                    },
+                    {
+                      icon: <Gift className="w-7 h-7" />,
+                      title: "Free Samples",
+                      description: "With every order",
+                    },
+                  ].map((feature, index) => (
+                    <div
+                      key={feature.title}
+                      className={`glass-card p-6 rounded-2xl hover:glow-subtle transition-all duration-500 hover:-translate-y-2 text-center scale-fade-in`}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br from-primary to-accent text-white mb-4 hover:scale-110 hover:rotate-6 transition-all duration-300">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-xl font-bebas gradient-text mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground font-dm text-sm">
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Limited Drop / FOMO Section */}
+            <section className="py-20 px-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-linear-to-r from-primary/5 via-accent/5 to-primary/5" />
+              <div className="relative max-w-5xl mx-auto">
+                <div className="glass-card rounded-3xl overflow-hidden border border-accent/30">
+                  <div className="grid md:grid-cols-2">
+                    <div className="relative h-64 md:h-auto min-h-[400px]">
+                      <Image
+                        src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800"
+                        alt="Limited Edition"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="px-4 py-2 bg-accent text-black font-space font-bold text-sm rounded-full animate-pulse">
+                          LIMITED EDITION
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-8 md:p-12 flex flex-col justify-center">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Clock className="w-5 h-5 text-accent" />
+                        <span className="text-accent font-space font-bold text-sm">
+                          DROPPING SOON
+                        </span>
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-bebas mb-4">
+                        <span className="gradient-text">SUMMER</span>
+                        <br />
+                        <span className="text-foreground">COLLECTION 2026</span>
+                      </h2>
+                      <p className="text-muted-foreground font-dm mb-6">
+                        Fresh, citrusy, and perfect for the hot girl summer.
+                        Only 500 bottles available. Join the waitlist to get
+                        early access. 🌴
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          className="flex-1 px-4 py-3 glass-card border border-accent/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 font-dm"
+                        />
+                        <button className="px-6 py-3 bg-accent text-black rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                          <Send className="w-4 h-4" />
+                          NOTIFY ME
+                        </button>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-4 font-dm">
+                        🔒 247 people already on the waitlist
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Brand Story */}
+            <section className="py-20 px-4 bg-secondary/30 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-primary/50 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/50 rounded-full blur-3xl" />
+              </div>
+
+              <div className="relative max-w-4xl mx-auto text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
+                  <Heart className="w-4 h-4 text-pink-500 fill-pink-500" />
+                  <span className="text-xs font-space font-bold tracking-widest">
+                    OUR STORY
+                  </span>
+                </div>
+                <h2 className="text-5xl md:text-7xl font-bebas mb-8">
+                  <span className="gradient-text">BORN FOR THE</span>
+                  <br />
+                  <span className="text-foreground">NEW GENERATION</span>
+                </h2>
+                <p className="text-xl text-muted-foreground mb-6 font-dm leading-relaxed">
+                  XPerfumes was created by perfume lovers who were tired of
+                  fragrances that smelled like our parents' generation. We
+                  wanted something
+                  <span className="text-primary font-semibold">
+                    {" "}
+                    fresh
+                  </span>,{" "}
+                  <span className="text-accent font-semibold">bold</span>, and{" "}
+                  <span className="gradient-text font-semibold">
+                    unapologetically us
+                  </span>
+                  .
+                </p>
+                <p className="text-lg text-muted-foreground mb-8 font-dm">
+                  Every bottle is crafted with premium ingredients, designed for
+                  all-day performance, and made to turn heads. Because you
+                  deserve a scent that matches your main character energy. 🌟
+                </p>
+                <Link href="/about">
+                  <button className="group px-8 py-4 glass-card border-2 border-primary/50 hover:bg-primary/20 rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2">
+                    READ OUR FULL STORY
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </Link>
+              </div>
+            </section>
+
+            {/* Newsletter */}
+            <section className="py-20 px-4 border-t border-primary/20 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-linear-to-r from-primary to-accent rounded-full blur-3xl animate-pulse" />
+              </div>
+
+              <div className="relative max-w-2xl mx-auto text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full mb-6">
+                  <Sparkles className="w-4 h-4 text-accent" />
+                  <span className="text-xs font-space font-bold tracking-widest gradient-text">
+                    JOIN 10K+ SUBSCRIBERS
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-6xl font-bebas mb-4 gradient-text">
+                  STAY IN THE LOOP
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8 font-dm">
+                  Be the first to know about new drops, exclusive deals, and
+                  insider vibes. Plus get{" "}
+                  <span className="text-accent font-bold">10% off</span> your
+                  first order! 🎁
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-6 py-4 glass-card border border-primary/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
+                  />
+                  <button className="px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 hover:rotate-1 transition-all duration-300 glow-primary shadow-2xl">
+                    GET 10% OFF
+                  </button>
+                </div>
+                <p className="text-xs text-muted-foreground mt-4 font-dm">
+                  No spam, just good vibes. Unsubscribe anytime. 🤝
+                </p>
+              </div>
+            </section>
+          </main>
+          <Footer />
+        </>
+      )}
     </>
-  )
+  );
 }

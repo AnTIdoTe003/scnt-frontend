@@ -70,7 +70,7 @@ export function LaunchCountdown() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-primary">
+    <div className="fixed inset-0 z-9999 flex items-center justify-center bg-primary">
       {/* Animated gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-amber-500/20 blur-[120px] animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-amber-600/15 blur-[100px] animate-pulse" style={{ animationDelay: "1s" }} />
@@ -113,7 +113,7 @@ export function LaunchCountdown() {
           href="https://www.instagram.com/xperfumes.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-amber-700 text-white font-space font-bold text-sm tracking-wider hover:scale-105 transition-all duration-300 shadow-[0_8px_32px_rgba(183,139,91,0.4)] mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-amber-700 text-white font-space font-bold text-sm tracking-wider hover:scale-105 transition-all duration-300 shadow-[0_8px_32px_rgba(183,139,91,0.4)] mb-6 animate-in fade-in slide-in-from-bottom-4"
           style={{ animationDelay: "0.4s" }}
         >
           <Instagram className="w-5 h-5" />
