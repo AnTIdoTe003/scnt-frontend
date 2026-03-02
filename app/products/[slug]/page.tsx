@@ -53,7 +53,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug?:
             brand: { "@type": "Brand", name: "XPerfumes" },
             offers: {
               "@type": "Offer",
-              url: `https://xperfumes.in/product/${product.slug}`,
+              url: `https://xperfumes.in/products/${product.slug}`,
               priceCurrency: "INR",
               price: product.price.replace(/[₹,]/g, ""),
               availability: "https://schema.org/InStock",

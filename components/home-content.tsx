@@ -170,7 +170,7 @@ export function HomeContent() {
                   slug: "ethereal",
                 },
               ].map((item, index) => (
-                <Link key={item.name} href={`/product/${item.slug}`}>
+                <Link key={item.name} href={`/products/${item.slug}`}>
                   <div
                     className="group relative aspect-3/4 rounded-2xl overflow-hidden cursor-pointer scale-fade-in"
                     style={{ animationDelay: `${index * 0.1}s` }}

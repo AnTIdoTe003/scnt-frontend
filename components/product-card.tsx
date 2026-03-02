@@ -37,7 +37,7 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link href={`/product/${slug}`}>
+      <Link href={`/products/${slug}`}>
         <div className="relative rounded-2xl overflow-hidden glass-card hover:glow-subtle transition-all duration-500 hover:-translate-y-1">
           {/* Product Image */}
           <div className="relative h-72 bg-linear-to-b from-secondary/70 to-background overflow-hidden">
@@ -117,7 +117,7 @@ export function ProductCard({ name, price, notes, slug, image, variantId, availa
                   onClick={(e) => {
                     e.preventDefault()
                     e.stopPropagation()
-                    router.push(`/product/${slug}`)
+                    router.push(`/products/${slug}`)
                   }}
                   className="block w-full py-3 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm text-center hover:scale-[1.02] transition-all duration-300"
                 >

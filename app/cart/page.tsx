@@ -77,7 +77,7 @@ export default function CartPage() {
                     <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                       <div>
                         <Link
-                          href={`/product/${line.merchandise.product.handle}`}
+                          href={`/products/${line.merchandise.product.handle}`}
                           className="font-space font-bold text-lg hover:text-primary"
                         >
                           {line.merchandise.product.title}

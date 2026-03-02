@@ -94,8 +94,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: "/icon.svg",
+    apple: "/icon.svg",
   },
   verification: {
     google: 'your-google-verification-code',

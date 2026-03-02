@@ -61,7 +61,7 @@ export function CartDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <Link
-                        href={`/product/${line.merchandise.product.handle}`}
+                        href={`/products/${line.merchandise.product.handle}`}
                         onClick={() => setCartOpen(false)}
                         className="font-space font-bold text-sm hover:text-primary line-clamp-2"
                       >

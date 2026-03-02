@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all products (from Shopify or static fallback)
   const products = await getAllProductsAsync()
   const productUrls = products.map((product) => ({
-    url: `${baseUrl}/product/${product.slug}`,
+    url: `${baseUrl}/products/${product.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
