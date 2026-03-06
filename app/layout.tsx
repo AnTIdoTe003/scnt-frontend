@@ -5,6 +5,8 @@ import { Analytics } from "@vercel/analytics/next"
 import { CartProvider } from "@/contexts/cart-context"
 import { CartDrawer } from "@/components/cart-drawer"
 import { OfferPopupWrapper } from "@/components/offer-popup-wrapper"
+import { MetaPixel } from "@/components/meta-pixel"
+import { GoogleAnalytics } from "@/components/google-analytics"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -165,6 +167,8 @@ export default function RootLayout({
           <CartDrawer />
           <OfferPopupWrapper />
         </CartProvider>
+        <MetaPixel />
+        <GoogleAnalytics />
         <Analytics />
       </body>
     </html>
