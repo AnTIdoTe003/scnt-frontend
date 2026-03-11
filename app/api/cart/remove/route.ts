@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
-import { CART_LINES_REMOVE_MUTATION } from "@/lib/shopify/cart-queries"
+import { CART_LINES_REMOVE_MUTATION, CART_DISCOUNT_CODES_UPDATE_MUTATION } from "@/lib/shopify/cart-queries"
+
+const BUNDLE_DISCOUNT_CODE = "ES-LVAKFVU3K4LE"
 
 async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}) {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
@@ -32,14 +34,36 @@ export async function POST(req: NextRequest) {
     const cartId = cookieStore.get("shopify_cart_id")?.value
     if (!cartId) return NextResponse.json({ error: "No cart" }, { status: 400 })
 
-    const data = await shopifyFetch<{ cartLinesRemove: { cart: unknown; userErrors: Array<{ message: string }> } }>(
+    const data = await shopifyFetch<{ cartLinesRemove: { cart: any; userErrors: Array<{ message: string }> } }>(
       CART_LINES_REMOVE_MUTATION,
       { cartId, lineIds }
     )
     if (data.cartLinesRemove.userErrors?.length) {
       return NextResponse.json({ error: data.cartLinesRemove.userErrors[0].message }, { status: 400 })
     }
-    return NextResponse.json({ cart: data.cartLinesRemove.cart })
+
+    let cart = data.cartLinesRemove.cart
+
+    // --- Dynamic Discount Logic ---
+    if (cart && cart.lines) {
+      const totalItems = cart.lines.edges.reduce((sum: number, { node }: any) => sum + node.quantity, 0)
+
+      // If 2 or more items exist, apply the BUNDLE_DISCOUNT_CODE, otherwise remove it (by sending empty array)
+      const discountCodesToApply = totalItems >= 2 ? [BUNDLE_DISCOUNT_CODE] : []
+
+      const discountData = await shopifyFetch<{
+        cartDiscountCodesUpdate: { cart: any; userErrors: Array<{ message: string }> }
+      }>(CART_DISCOUNT_CODES_UPDATE_MUTATION, {
+        cartId: cart.id,
+        discountCodes: discountCodesToApply,
+      })
+
+      if (discountData.cartDiscountCodesUpdate?.cart) {
+        cart = discountData.cartDiscountCodesUpdate.cart
+      }
+    }
+
+    return NextResponse.json({ cart })
   } catch (e) {
     return NextResponse.json({ error: (e as Error).message }, { status: 500 })
   }

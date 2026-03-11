@@ -24,6 +24,7 @@ import {
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProductCard } from "@/components/product-card";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 export function HomeContent() {
   return (
@@ -225,10 +226,12 @@ export function HomeContent() {
                     scent based on your vibe, personality, and lifestyle. No
                     cap, it's lowkey accurate. 🎯
                   </p>
-                  <button className="group px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2">
-                    FIND MY SCENT
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  <Link href="/quiz">
+                    <button className="group px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2">
+                      FIND MY SCENT
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </Link>
                 </div>
                 <div className="relative h-64 md:h-full min-h-[300px]">
                   <Image
@@ -643,17 +646,7 @@ export function HomeContent() {
                     Only 500 bottles available. Join the waitlist to get
                     early access. 🌴
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 glass-card border border-accent/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 font-dm"
-                    />
-                    <button className="px-6 py-3 bg-accent text-black rounded-xl font-space font-bold hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
-                      <Send className="w-4 h-4" />
-                      NOTIFY ME
-                    </button>
-                  </div>
+                  <NewsletterForm buttonText="NOTIFY ME" sourceText="Summer 2026 Waitlist" />
                   <p className="text-xs text-muted-foreground mt-4 font-dm">
                     🔒 247 people already on the waitlist
                   </p>
@@ -729,17 +722,8 @@ export function HomeContent() {
               <span className="text-accent font-bold">10% off</span> your
               first order! 🎁
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 glass-card border border-primary/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-dm"
-              />
-              <button className="px-8 py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold hover:scale-105 hover:rotate-1 transition-all duration-300 glow-primary shadow-2xl">
-                GET 10% OFF
-              </button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-4 font-dm">
+            <NewsletterForm buttonText="GET 10% OFF" sourceText="Main Newsletter Subscription" />
+            <p className="text-xs text-muted-foreground mt-6 font-dm">
               No spam, just good vibes. Unsubscribe anytime. 🤝
             </p>
           </div>

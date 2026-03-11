@@ -2,6 +2,10 @@ export const CART_FRAGMENT = `
   fragment CartFields on Cart {
     id
     checkoutUrl
+    discountCodes {
+      code
+      applicable
+    }
     lines(first: 100) {
       edges {
         node {
@@ -53,6 +57,16 @@ export const CART_LINES_ADD_MUTATION = `
 export const CART_LINES_UPDATE_MUTATION = `
   mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart { ...CartFields }
+      userErrors { message field }
+    }
+  }
+  ${CART_FRAGMENT}
+`
+
+export const CART_DISCOUNT_CODES_UPDATE_MUTATION = `
+  mutation CartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!) {
+    cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
       cart { ...CartFields }
       userErrors { message field }
     }
