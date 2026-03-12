@@ -1,17 +1,37 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, ShieldCheck } from "lucide-react"
+import { Minus, Plus, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Loader2 } from "lucide-react"
 import { useCart } from "@/contexts/cart-context"
 import { formatINR } from "@/lib/currency"
 
 export function CartDrawer() {
   const { cart, cartOpen, setCartOpen, updateLine, removeLine, isLoading } = useCart()
+  const [loadingAction, setLoadingAction] = useState<{ id: string; type: "plus" | "minus" | "remove" } | null>(null)
 
   const lines = cart?.lines?.edges ?? []
+
+  const handleUpdate = async (id: string, quantity: number, type: "plus" | "minus") => {
+    setLoadingAction({ id, type })
+    try {
+      await updateLine(id, quantity)
+    } finally {
+      setLoadingAction(null)
+    }
+  }
+
+  const handleRemove = async (id: string) => {
+    setLoadingAction({ id, type: "remove" })
+    try {
+      await removeLine(id)
+    } finally {
+      setLoadingAction(null)
+    }
+  }
   const isEmpty = lines.length === 0
 
   const formatPrice = (amount: string, currencyCode: string) => {
@@ -99,12 +119,16 @@ export function CartDrawer() {
                             {line.merchandise.product.title}
                           </Link>
                           <button
-                            onClick={() => removeLine(line.id)}
+                            onClick={() => handleRemove(line.id)}
                             disabled={isLoading}
-                            className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors -mr-1.5 -mt-1.5"
+                            className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded-lg transition-colors -mr-1.5 -mt-1.5 disabled:opacity-50"
                             aria-label="Remove item"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            {loadingAction?.id === line.id && loadingAction.type === "remove" ? (
+                              <Loader2 className="w-4 h-4 animate-spin text-destructive" />
+                            ) : (
+                              <Trash2 className="w-4 h-4" />
+                            )}
                           </button>
                         </div>
                         <p className="text-xs text-muted-foreground font-dm mt-1">
@@ -115,21 +139,29 @@ export function CartDrawer() {
                       <div className="flex items-end justify-between mt-3">
                         <div className="flex items-center rounded-xl border border-border/60 bg-background/50 overflow-hidden shadow-sm">
                           <button
-                            onClick={() => updateLine(line.id, Math.max(1, line.quantity - 1))}
-                            disabled={isLoading}
-                            className="h-8 w-8 flex items-center justify-center hover:bg-secondary hover:text-foreground text-muted-foreground transition-colors disabled:opacity-50"
+                            onClick={() => handleUpdate(line.id, Math.max(1, line.quantity - 1), "minus")}
+                            disabled={isLoading || line.quantity <= 1}
+                            className="h-8 w-8 flex items-center justify-center hover:bg-secondary hover:text-foreground text-muted-foreground transition-colors disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
                           >
-                            <Minus className="w-3.5 h-3.5" />
+                            {loadingAction?.id === line.id && loadingAction.type === "minus" ? (
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            ) : (
+                              <Minus className="w-3.5 h-3.5" />
+                            )}
                           </button>
                           <span className="h-8 w-8 flex items-center justify-center text-sm font-space font-bold border-x border-border/60 bg-background select-none">
                             {line.quantity}
                           </span>
                           <button
-                            onClick={() => updateLine(line.id, line.quantity + 1)}
+                            onClick={() => handleUpdate(line.id, line.quantity + 1, "plus")}
                             disabled={isLoading}
-                            className="h-8 w-8 flex items-center justify-center hover:bg-secondary hover:text-foreground text-muted-foreground transition-colors disabled:opacity-50"
+                            className="h-8 w-8 flex items-center justify-center hover:bg-secondary hover:text-foreground text-muted-foreground transition-colors disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
                           >
-                            <Plus className="w-3.5 h-3.5" />
+                            {loadingAction?.id === line.id && loadingAction.type === "plus" ? (
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            ) : (
+                              <Plus className="w-3.5 h-3.5" />
+                            )}
                           </button>
                         </div>
                         <div className="font-space font-bold text-foreground">

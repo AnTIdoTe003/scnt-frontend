@@ -230,32 +230,9 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between gap-4 border-y border-border py-5 mb-6">
-                <div>
-                  <div className="text-3xl font-bebas text-foreground">{formatINR(product.price)}</div>
-                  <div className="text-xs text-muted-foreground font-dm">incl. of all taxes</div>
-                </div>
-                <div className="flex items-center rounded-xl border border-border overflow-hidden bg-card">
-                  <button
-                    type="button"
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="h-11 w-11 grid place-items-center hover:bg-secondary transition-colors"
-                    aria-label="Decrease quantity"
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <div className="h-11 w-12 grid place-items-center text-sm font-space font-bold border-x border-border">
-                    {quantity}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="h-11 w-11 grid place-items-center hover:bg-secondary transition-colors"
-                    aria-label="Increase quantity"
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </div>
+              <div className="border-y border-border py-5 mb-6">
+                <div className="text-3xl font-bebas text-foreground">{formatINR(product.price)}</div>
+                <div className="text-xs text-muted-foreground font-dm">incl. of all taxes</div>
               </div>
 
               <div className="mb-6 rounded-2xl border border-border bg-card overflow-hidden">
@@ -280,7 +257,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
               <div className="mb-6">
                 <label className="block text-xs font-space font-bold mb-3 text-muted-foreground tracking-widest">SIZE</label>
                 <div className="flex gap-2 flex-wrap">
-                  {["30ml", "50ml", "100ml"].map((size) => (
+                  {["50ml"].map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
@@ -295,27 +272,201 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
                 </div>
               </div>
 
-              {product.availableForSale === false ? (
-                <div className="w-full h-14 flex items-center justify-center rounded-xl font-space font-bold text-sm tracking-widest bg-muted text-muted-foreground cursor-not-allowed">
-                  OUT OF STOCK
-                </div>
-              ) : inventoryQuantity !== null && inventoryQuantity > 5 ? (
-                <button
-                  onClick={handleAddToCart}
-                  disabled={!product.variantId || adding}
-                  className="w-full h-14 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm tracking-widest hover:opacity-95 transition disabled:opacity-50 glow-primary flex items-center justify-center gap-2"
-                >
-                  {adding ? "ADDING TO CART..." : "ADD TO CART (SCROLL DOWN for bundles)"}
-                </button>
-              ) : (
-                <button
-                  onClick={handleAddToCart}
-                  disabled={!product.variantId || adding}
-                  className="w-full h-14 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm tracking-widest hover:opacity-95 transition disabled:opacity-50 disabled:cursor-not-allowed glow-primary"
-                >
-                  {adding ? "ADDING TO CART..." : "ADD TO CART"}
-                </button>
-              )}
+              {/* TIERED BUNDLE AND FBT */}
+              <div className="mb-6">
+                {product.availableForSale === false ? (
+                  <div className="w-full h-14 flex items-center justify-center rounded-xl font-space font-bold text-sm tracking-widest bg-muted text-muted-foreground cursor-not-allowed">
+                    OUT OF STOCK
+                  </div>
+                ) : inventoryQuantity !== null && inventoryQuantity > 5 ? (
+                  <div className="p-5 border border-border rounded-xl glass-card relative overflow-hidden w-full">
+                    {/* Decorative gradient blob */}
+                    <div className="absolute -top-32 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+                    <h3 className="text-lg font-space font-bold tracking-wider text-foreground mb-4">
+                      Buy more, save more
+                    </h3>
+
+                    <div className="space-y-3">
+                      {/* Tier 1 */}
+                      <label
+                        className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${selectedBundle === 1 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/40 bg-card'
+                          }`}
+                      >
+                        <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                          <div className={`w-4 h-4 rounded-full border flex items-center justify-center ${selectedBundle === 1 ? 'border-accent' : 'border-muted-foreground/30'
+                            }`}>
+                            {selectedBundle === 1 && <div className="w-2 h-2 bg-accent rounded-full" />}
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="font-space font-bold text-sm text-foreground">Buy 1</span>
+                            <span className="text-[10px] font-dm bg-secondary text-muted-foreground px-2 py-0.5 rounded-full">Full price</span>
+                          </div>
+                        </div>
+                        <span className="font-space text-sm text-foreground text-right sm:text-left">{bundleOnePrice}</span>
+                        <input type="radio" className="hidden" checked={selectedBundle === 1} onChange={() => setSelectedBundle(1)} />
+                      </label>
+
+                      {/* Tier 2 */}
+                      <label
+                        className={`relative flex flex-col sm:flex-row sm:items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${selectedBundle === 2 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/70 bg-card shadow-sm'
+                          }`}
+                      >
+                        <div className="absolute -top-3 right-4 bg-muted-foreground/80 text-background text-[9px] font-space font-bold px-2 py-1 rounded-md flex items-center gap-1 shadow-md">
+                          Popular
+                          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-muted-foreground/80" />
+                        </div>
+
+                        <div className="flex items-center gap-3 mb-2 sm:mb-0 pt-1">
+                          <div className={`w-4 h-4 rounded-full border flex shrink-0 items-center justify-center ${selectedBundle === 2 ? 'border-accent' : 'border-muted-foreground/30'
+                            }`}>
+                            {selectedBundle === 2 && <div className="w-2 h-2 bg-accent rounded-full" />}
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="font-space font-bold text-sm text-foreground">Buy 2</span>
+                            <span className="text-[10px] font-dm bg-muted-foreground/80 text-background px-2 py-0.5 rounded-full font-bold">Save 10%</span>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col items-end text-right sm:text-left pt-1">
+                          <span className="text-[10px] font-dm text-muted-foreground line-through decoration-muted-foreground/50">{formatPrice(numericPrice * 2)}</span>
+                          <span className="font-space font-bold text-sm text-foreground">{formatPrice(bundleTwoFinal)}</span>
+                        </div>
+                        <input type="radio" className="hidden" checked={selectedBundle === 2} onChange={() => setSelectedBundle(2)} />
+                      </label>
+
+                      {/* Tier 3 */}
+                      <label
+                        className={`flex flex-col sm:flex-row sm:items-center justify-between p-4 border rounded-xl cursor-pointer transition-all ${selectedBundle === 3 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/40 bg-card'
+                          }`}
+                      >
+                        <div className="flex items-center gap-3 mb-2 sm:mb-0">
+                          <div className={`w-4 h-4 rounded-full border flex shrink-0 items-center justify-center ${selectedBundle === 3 ? 'border-accent' : 'border-muted-foreground/30'
+                            }`}>
+                            {selectedBundle === 3 && <div className="w-2 h-2 bg-accent rounded-full" />}
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="font-space font-bold text-sm text-foreground">Buy 3+</span>
+                            <span className="text-[10px] font-dm bg-muted-foreground/80 text-background px-2 py-0.5 rounded-full font-bold">Save 15%</span>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col items-end text-right sm:text-left">
+                          <span className="text-[10px] font-dm text-muted-foreground line-through decoration-muted-foreground/50">{formatPrice(numericPrice * 3)}</span>
+                          <span className="font-space font-bold text-sm text-foreground">{formatPrice(bundleThreeFinal)}</span>
+                        </div>
+                        <input type="radio" className="hidden" checked={selectedBundle === 3} onChange={() => setSelectedBundle(3)} />
+                      </label>
+                    </div>
+
+                    {/* Summary Block */}
+                    <div className="mt-5 pt-4 border-t border-border flex flex-col justify-end gap-4">
+                      <div className="flex items-end justify-between">
+                        <span className="text-sm font-space font-bold text-foreground">Total</span>
+
+                        <div className="flex flex-col items-end gap-0.5">
+                          {selectedBundle > 1 && (
+                            <div className="flex items-center gap-1.5 text-[10px] font-space font-bold text-green-600 bg-green-500/10 px-2 py-0.5 rounded">
+                              <ShieldCheck className="w-3 h-3" />
+                              SAVE {formatPrice(currentSavings)}
+                            </div>
+                          )}
+                          <div className="flex items-center justify-end gap-2">
+                            {selectedBundle > 1 && (
+                              <span className="text-xs font-dm text-muted-foreground line-through decoration-muted-foreground/50">
+                                {formatPrice(originalTotal)}
+                              </span>
+                            )}
+                            <span className="text-2xl font-space font-bold text-foreground leading-none">
+                              {formatPrice(currentTotal)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleAddToCart}
+                        disabled={!product.variantId || adding}
+                        className="w-full h-12 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm tracking-widest hover:opacity-95 transition disabled:opacity-50 glow-primary flex items-center justify-center"
+                      >
+                        {adding ? "ADDING TO CART..." : "ADD SELECTED BUNDLE TO CART"}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-6">
+                    <button
+                      onClick={handleAddToCart}
+                      disabled={!product.variantId || adding}
+                      className="w-full h-14 bg-primary text-primary-foreground rounded-xl font-space font-bold text-sm tracking-widest hover:opacity-95 transition disabled:opacity-50 disabled:cursor-not-allowed glow-primary"
+                    >
+                      {adding ? "ADDING TO CART..." : "ADD TO CART"}
+                    </button>
+
+                    <div className="glass-card p-5 rounded-2xl border border-border flex flex-col gap-4 relative overflow-hidden">
+                      {/* Decorative gradient blob */}
+                      <div className="absolute -top-32 -right-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+                      <h2 className="text-lg font-bebas text-foreground tracking-wider mb-2">FREQUENTLY BOUGHT TOGETHER</h2>
+
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-border shrink-0">
+                          <Image src={product.images[0] || ""} alt={product.name} fill className="object-cover" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bebas text-lg text-foreground leading-none mb-1">{product.name}</h4>
+                          <p className="text-xs font-space text-muted-foreground">{formatINR(product.price)}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-center -my-2 opacity-50">
+                        <Plus className="w-4 h-4 text-foreground" />
+                      </div>
+
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-border shrink-0">
+                          <Image src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400" alt="Discovery Set" fill className="object-cover" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-bebas text-lg text-foreground leading-none mb-1">Discovery Set</h4>
+                          <p className="text-xs font-space text-muted-foreground">₹999</p>
+                        </div>
+                      </div>
+
+                      <div className="mt-2 pt-4 border-t border-border flex flex-col gap-3 w-full">
+                        <div className="flex justify-between items-end">
+                          <div className="flex flex-col">
+                            <div className="text-xs font-space font-bold text-accent mb-1">BUNDLE 15% OFF</div>
+                            <span className="text-sm font-dm line-through text-muted-foreground decoration-red-500/50 leading-none">
+                              ₹{(parseInt(product.price) + 999).toString()}
+                            </span>
+                          </div>
+                          <div className="flex flex-col items-end">
+                            <span className="text-2xl font-space font-bold text-foreground leading-none">
+                              ₹{Math.floor((parseInt(product.price) + 999) * 0.85).toString()}
+                            </span>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={async () => {
+                            if (!product.variantId) return
+                            setAdding(true)
+                            try {
+                              await addToCart(product.variantId, 1)
+                            } finally {
+                              setAdding(false)
+                            }
+                          }}
+                          disabled={!product.variantId || adding}
+                          className="w-full h-12 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold tracking-widest hover:opacity-95 transition disabled:opacity-50 text-xs"
+                        >
+                          ADD BUNDLE
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <DeliveryEstimator />
               <div className="text-center font-space font-bold tracking-widest text-sm mb-5">
@@ -432,177 +583,7 @@ export function ProductPageClient({ product }: ProductPageClientProps) {
           </div>
         </div>
 
-        {/* FREQUENTLY BOUGHT TOGETHER vs TIERED BUNDLE */}
-        <div className="max-w-7xl mx-auto px-4 mb-20 pt-16 border-t border-border slide-in-bottom">
-          {inventoryQuantity !== null && inventoryQuantity > 5 ? (
-            <div className="p-8 border border-border rounded-2xl glass-card relative overflow-hidden max-w-2xl mx-auto">
-              {/* Decorative gradient blob */}
-              <div className="absolute -top-32 -right-32 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-              <h3 className="text-xl font-space font-bold tracking-wider text-foreground mb-6">
-                Buy more, save more
-              </h3>
-
-              <div className="space-y-4">
-                {/* Tier 1 */}
-                <label
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 border rounded-2xl cursor-pointer transition-all ${selectedBundle === 1 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/40 bg-card'
-                    }`}
-                >
-                  <div className="flex items-center gap-4 mb-2 sm:mb-0">
-                    <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${selectedBundle === 1 ? 'border-accent' : 'border-muted-foreground/30'
-                      }`}>
-                      {selectedBundle === 1 && <div className="w-2.5 h-2.5 bg-accent rounded-full" />}
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <span className="font-space font-bold text-foreground">Buy 1</span>
-                      <span className="text-xs font-dm bg-secondary text-muted-foreground px-2 py-1 rounded-full">Full price</span>
-                    </div>
-                  </div>
-                  <span className="font-space text-foreground text-right sm:text-left">{bundleOnePrice}</span>
-                  <input type="radio" className="hidden" checked={selectedBundle === 1} onChange={() => setSelectedBundle(1)} />
-                </label>
-
-                {/* Tier 2 */}
-                <label
-                  className={`relative flex flex-col sm:flex-row sm:items-center justify-between p-5 border rounded-2xl cursor-pointer transition-all ${selectedBundle === 2 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/70 bg-card shadow-sm'
-                    }`}
-                >
-                  <div className="absolute -top-3 right-4 bg-muted-foreground/80 text-background text-[10px] font-space font-bold px-3 py-1 rounded-md flex items-center gap-1 shadow-md">
-                    Popular
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-l-4 border-l-transparent border-r-4 border-r-transparent border-t-4 border-t-muted-foreground/80" />
-                  </div>
-
-                  <div className="flex items-center gap-4 mb-2 sm:mb-0 pt-1">
-                    <div className={`w-5 h-5 rounded-full border flex shrink-0 items-center justify-center ${selectedBundle === 2 ? 'border-accent' : 'border-muted-foreground/30'
-                      }`}>
-                      {selectedBundle === 2 && <div className="w-2.5 h-2.5 bg-accent rounded-full" />}
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <span className="font-space font-bold text-foreground">Buy 2</span>
-                      <span className="text-xs font-dm bg-muted-foreground/80 text-background px-3 py-1 rounded-full font-bold">Save 10%</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-end text-right sm:text-left pt-1">
-                    <span className="text-xs font-dm text-muted-foreground line-through decoration-muted-foreground/50">{formatPrice(numericPrice * 2)}</span>
-                    <span className="font-space font-bold text-foreground">{formatPrice(bundleTwoFinal)}</span>
-                  </div>
-                  <input type="radio" className="hidden" checked={selectedBundle === 2} onChange={() => setSelectedBundle(2)} />
-                </label>
-
-                {/* Tier 3 */}
-                <label
-                  className={`flex flex-col sm:flex-row sm:items-center justify-between p-5 border rounded-2xl cursor-pointer transition-all ${selectedBundle === 3 ? 'border-accent bg-accent/5' : 'border-border hover:border-accent/40 bg-card'
-                    }`}
-                >
-                  <div className="flex items-center gap-4 mb-2 sm:mb-0">
-                    <div className={`w-5 h-5 rounded-full border flex shrink-0 items-center justify-center ${selectedBundle === 3 ? 'border-accent' : 'border-muted-foreground/30'
-                      }`}>
-                      {selectedBundle === 3 && <div className="w-2.5 h-2.5 bg-accent rounded-full" />}
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <span className="font-space font-bold text-foreground">Buy 3+</span>
-                      <span className="text-xs font-dm bg-muted-foreground/80 text-background px-3 py-1 rounded-full font-bold">Save 15%</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-end text-right sm:text-left">
-                    <span className="text-xs font-dm text-muted-foreground line-through decoration-muted-foreground/50">{formatPrice(numericPrice * 3)}</span>
-                    <span className="font-space font-bold text-foreground">{formatPrice(bundleThreeFinal)}</span>
-                  </div>
-                  <input type="radio" className="hidden" checked={selectedBundle === 3} onChange={() => setSelectedBundle(3)} />
-                </label>
-              </div>
-
-              {/* Summary Block */}
-              <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-                <span className="text-xl font-space font-bold text-foreground">Total</span>
-
-                <div className="flex flex-col items-end gap-1 w-full sm:w-auto">
-                  {selectedBundle > 1 && (
-                    <div className="flex items-center gap-1.5 text-xs font-space font-bold text-foreground">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      YOU SAVE {formatPrice(currentSavings)}
-                    </div>
-                  )}
-                  <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
-                    {selectedBundle > 1 && (
-                      <span className="text-sm font-dm text-muted-foreground line-through decoration-muted-foreground/50">
-                        {formatPrice(originalTotal)}
-                      </span>
-                    )}
-                    <span className="text-2xl font-space font-bold text-foreground">
-                      {formatPrice(currentTotal)}
-                    </span>
-                  </div>
-                  <button
-                    onClick={handleAddToCart}
-                    disabled={!product.variantId || adding}
-                    className="w-full sm:w-auto mt-4 px-8 py-3 bg-foreground text-background rounded-xl font-space font-bold tracking-widest hover:bg-foreground/90 transition disabled:opacity-50"
-                  >
-                    {adding ? "ADDING..." : "ADD SELECTED BUNDLE"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="glass-card p-6 md:p-8 rounded-3xl border border-border flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-              {/* Decorative gradient blob */}
-              <div className="absolute -top-32 -right-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-              <h2 className="text-3xl font-bebas text-foreground tracking-wider mb-8 absolute top-8 left-8">FREQUENTLY BOUGHT TOGETHER</h2>
-              <div className="flex-1 flex items-center gap-4 mt-16 md:mt-0">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-border">
-                  <Image src={product.images[0] || ""} alt={product.name} fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-bebas text-xl text-foreground">{product.name}</h4>
-                  <p className="text-sm font-space text-muted-foreground">Original Price: {formatINR(product.price)}</p>
-                </div>
-              </div>
-
-              <div className="text-2xl font-bebas text-muted-foreground">+</div>
-
-              <div className="flex-1 flex items-center gap-4">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden border border-border">
-                  <Image src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=400" alt="Discovery Set" fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="font-bebas text-xl text-foreground">Discovery Set</h4>
-                  <p className="text-sm font-space text-muted-foreground">Original Price: ₹999</p>
-                </div>
-              </div>
-
-              <div className="flex-1 md:border-l border-border md:pl-8 flex flex-col items-center md:items-start text-center md:text-left w-full">
-                <div className="mb-1 text-sm font-space font-bold text-accent">BUNDLE DISCOUNT 15%</div>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bebas line-through text-muted-foreground decoration-red-500/50">
-                    ₹{(parseInt(product.price) + 999).toString()}
-                  </span>
-                  <span className="text-4xl font-bebas text-foreground">
-                    ₹{Math.floor((parseInt(product.price) + 999) * 0.85).toString()}
-                  </span>
-                </div>
-
-                <button
-                  onClick={async () => {
-                    if (!product.variantId) return
-                    setAdding(true)
-                    try {
-                      await addToCart(product.variantId, 1)
-                    } finally {
-                      setAdding(false)
-                    }
-                  }}
-                  disabled={!product.variantId || adding}
-                  className="w-full py-4 bg-linear-to-r from-primary to-accent text-white rounded-xl font-space font-bold tracking-widest hover:opacity-95 transition disabled:opacity-50"
-                >
-                  ADD BUNDLE TO CART
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* FREQUENTLY BOUGHT TOGETHER vs TIERED BUNDLE moved to right column */}
 
         <div className="max-w-7xl mx-auto px-4 pb-20">
           <ProductReviews productId={product.slug} />

@@ -9,7 +9,8 @@ import {
 
 const CART_COOKIE = "shopify_cart_id"
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
-const BUNDLE_DISCOUNT_CODE = "ES-LVAKFVU3K4LE"
+const BUNDLE_2_DISCOUNT_CODE = "ES-LVAKFVU3K4LE"
+const BUNDLE_3_DISCOUNT_CODE = "BUNDLE15"
 
 async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}) {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
@@ -109,13 +110,19 @@ export async function POST(req: NextRequest) {
     if (cart) {
       const totalItems = cart.lines.edges.reduce((sum, { node }) => sum + node.quantity, 0)
 
-      // If 2 or more items exist, apply the BUNDLE_DISCOUNT_CODE
-      if (totalItems >= 2) {
+      let discountCodesToApply: string[] = []
+      if (totalItems >= 3) {
+        discountCodesToApply = [BUNDLE_3_DISCOUNT_CODE]
+      } else if (totalItems === 2) {
+        discountCodesToApply = [BUNDLE_2_DISCOUNT_CODE]
+      }
+
+      if (discountCodesToApply.length > 0) {
         const discountData = await shopifyFetch<{
           cartDiscountCodesUpdate: { cart: CartType; userErrors: Array<{ message: string }> }
         }>(CART_DISCOUNT_CODES_UPDATE_MUTATION, {
           cartId: cart.id,
-          discountCodes: [BUNDLE_DISCOUNT_CODE],
+          discountCodes: discountCodesToApply,
         })
 
         if (discountData.cartDiscountCodesUpdate?.cart) {

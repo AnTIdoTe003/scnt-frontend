@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { CART_LINES_REMOVE_MUTATION, CART_DISCOUNT_CODES_UPDATE_MUTATION } from "@/lib/shopify/cart-queries"
 
-const BUNDLE_DISCOUNT_CODE = "ES-LVAKFVU3K4LE"
+const BUNDLE_2_DISCOUNT_CODE = "ES-LVAKFVU3K4LE"
+const BUNDLE_3_DISCOUNT_CODE = "BUNDLE15"
 
 async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}) {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
@@ -48,8 +49,12 @@ export async function POST(req: NextRequest) {
     if (cart && cart.lines) {
       const totalItems = cart.lines.edges.reduce((sum: number, { node }: any) => sum + node.quantity, 0)
 
-      // If 2 or more items exist, apply the BUNDLE_DISCOUNT_CODE, otherwise remove it (by sending empty array)
-      const discountCodesToApply = totalItems >= 2 ? [BUNDLE_DISCOUNT_CODE] : []
+      let discountCodesToApply: string[] = []
+      if (totalItems >= 3) {
+        discountCodesToApply = [BUNDLE_3_DISCOUNT_CODE]
+      } else if (totalItems === 2) {
+        discountCodesToApply = [BUNDLE_2_DISCOUNT_CODE]
+      }
 
       const discountData = await shopifyFetch<{
         cartDiscountCodesUpdate: { cart: any; userErrors: Array<{ message: string }> }
